@@ -1,0 +1,113 @@
+:root {
+  --jones-blue: #0273b9;
+  --font-size: 14px;
+  --border: 2px white solid;
+  --shadow: 2px 2px 0 #000000;
+  --gradient:linear-gradient(90deg, rgba(40,210,125,1) 0%, rgba(121,90,188,1) 62%, rgba(35,80,166,1) 97%);
+  --shape-margin: 1rem;
+  --light: #efefef;
+}
+body {
+	background: var(--jones-blue);
+	color: var(--light);
+	&:before {
+		content: 'This is page 932';
+		margin: 20px auto;
+		font-size: 1.6rem;
+	}
+}
+
+#experimental {
+	background-color: orange;
+	min-height: 40vh;
+	min-width: 100%;
+}
+
+
+#css-shape-path-experiments {
+	.letter {
+		float: left;
+		font-size: 400px;
+		font-family: Georgia;
+		line-height: .8;
+		margin-top: 20px;
+		margin-right: 20px;
+		shape-outside: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px) content-box;
+		clip-path: polygon(5px 14px, 233px 20px, 246px 133px, 189px 167px, 308px 304px, 0px 306px);
+	  }
+
+	  .circle,
+	  .ellipse,
+	  .inset,
+	  .polygon,
+	  .left,
+	  .right {
+		  background: var(--gradient);
+	  }
+	  #magazine-layout {
+		  .left,
+		  .right {
+			  height: 300px;
+			  width: 300px;
+			  shape-margin: var(--shape-margin);
+
+		  }
+		  .left {
+			  float: left;
+			  shape-outside: polygon(0 0, 0 300px, 200px 300px);
+			  clip-path: polygon(0 0, 0 300px, 200px 300px);
+		  }
+		  .right {
+			  float: right;
+			  shape-outside: polygon(200px 300px, 300px 300px, 300px 0, 0 0);
+			  clip-path: polygon(200px 300px, 300px 300px, 300px 0, 0 0);
+		  }
+	  } // end #magazine-layout
+
+	  .polygon {
+		float: left;
+		shape-margin: var(--shape-margin);
+		shape-outside: polygon(0 0, 0 300px, 200px 150px);
+		clip-path: polygon(0 0, 0 300px, 200px 150px);
+		height: 300px;
+		width: 300px;
+	  }
+
+	  .circle {
+		float: left;
+		height: 200px;
+		width: 200px;
+		shape-outside: circle();
+		shape-margin: var(--shape-margin);
+		clip-path: circle();
+	  }
+
+	  .ellipse {
+		float: left;
+		shape-margin: var(--shape-margin);
+		shape-outside: ellipse(farthest-side closest-side at 25% 25%);
+		clip-path: ellipse(farthest-side closest-side at 25% 25%);
+		width: 150px;
+		height: 300px;
+	  }
+
+	  .inset {
+		float: left;
+		shape-margin: var(--shape-margin);
+		shape-outside: inset(25px round 75px);
+		clip-path:inset(25px round 75px);
+		width:300px;
+		height: 300px;
+	  }
+
+	  .shape-example {
+		  padding-bottom: 1.5rem;
+		  border-bottom: var(--border);
+	  }
+	  p.content::after {
+		  content: 'Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the awards page of the customer journey. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. AI OpenScale is the cornerstone of Spriti’s DNA. It is pushing the envelope At the end of the customer journey. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform. But you can upgrade to a pro version for £7 a month with 15 personalised hub topic and 10 scoops a day. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. Spriti introduced new capabilities to the awards page of the customer journey. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. Spriti introduced new capabilities of the FirstSpriti Digital Experience Platform powers enterprise-class. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. Steps taken and calories burnt and send data to a pro version for £7 a month with 15 personalised hub topic and 10 scoops a day. Spriti introduced new capabilities of the FirstSpriti Digital Experience Platform powers enterprise-class. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the awards page of the customer journey. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. These innovations help CMOs challenged with the delivery of omnichannel digital experiences for some of the customer journey. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the awards page of the customer journey. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform powers enterprise-class. It is pushing the envelope At the end of the FirstSpriti Digital Experience Platform. Helping marketers serve unmatched cross-phase personalized experiences at every step of the FirstSpriti Digital Experience Platform powers enterprise-class. Clicking on this link which refers to B2B Marketing awards shortlist will take you to the awards page of the customer journey.';
+	  }
+} // end #css-shape-path-experiments
+
+
+
