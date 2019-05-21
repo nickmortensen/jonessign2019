@@ -2,7 +2,7 @@
 /**
  * Responsive Images configuration
  *
- * @package wprig
+ * @package js19
  */
 
 /**
@@ -37,13 +37,13 @@ add_filter( 'wp_calculate_image_sizes', 'wprig_content_image_sizes_attr', 10, 2 
  * @param array  $attr   Array of the attributes for the image tag.
  * @return string The filtered header image HTML.
  */
-function wprig_header_image_tag( $html, $header, $attr ) {
+function js19_header_image_tag( $html, $header, $attr ) {
 	if ( isset( $attr['sizes'] ) ) {
 		$html = str_replace( $attr['sizes'], '100vw', $html );
 	}
 	return $html;
 }
-add_filter( 'get_header_image_tag', 'wprig_header_image_tag', 10, 3 );
+add_filter( 'get_header_image_tag', 'js19_header_image_tag', 10, 3 );
 
 /**
  * Add custom image sizes attribute to enhance responsive image functionality
@@ -54,7 +54,7 @@ add_filter( 'get_header_image_tag', 'wprig_header_image_tag', 10, 3 );
  * @param array $size       Registered image size or flat array of height and width dimensions.
  * @return array The filtered attributes for the image markup.
  */
-function wprig_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
+function js19_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 
 	$attr['sizes'] = '100vw';
 
@@ -64,5 +64,20 @@ function wprig_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 
 	return $attr;
 }
-add_filter( 'wp_get_attachment_image_attributes', 'wprig_post_thumbnail_sizes_attr', 10, 3 );
+add_filter( 'wp_get_attachment_image_attributes', 'js19_post_thumbnail_sizes_attr', 10, 3 );
+/**
+ * Add custom image size.
+ */
+add_image_size( 'sixteen-nine', 800, 450 );
 
+add_filter( 'image_size_names_choose', 'js19_custom_sizes' );
+/**
+ * Make custom image sizes selectable through the admin.
+ *
+ * @param {array} $sizes All the sizes already set inside of Wordpress.
+ */
+function js19_custom_sizes( $sizes ) {
+	return array_merge( $sizes, array(
+		'sixteen-nine' => __( 'SixteenNine', 'wprig' ),
+	) );
+}

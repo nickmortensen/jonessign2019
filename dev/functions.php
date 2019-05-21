@@ -45,6 +45,7 @@ function wprig_setup() {
 	register_nav_menus(
 		array(
 			'primary' => esc_html__( 'Primary', 'wprig' ),
+			'better'  => esc_html__( 'Better Menu', 'wprig' ),
 		)
 	);
 
@@ -225,29 +226,29 @@ add_filter( 'embed_defaults', 'wprig_embed_dimensions' );
 /**
  * Register Google Fonts
  */
-function wprig_fonts_url() {
+function js19_fonts_url() {
 	$fonts_url = '';
 
 	/**
 	 * Translator: If Roboto Sans does not support characters in your language, translate this to 'off'.
 	 */
-	$roboto = esc_html_x( 'on', 'Roboto  font: on or off', 'wprig' );
+	$roboto = esc_html_x( 'on', 'Roboto Condensed font: on or off', 'wprig' );
 	/**
 	 * Translator: If Crimson Text does not support characters in your language, translate this to 'off'.
 	 */
-	$open_sans = esc_html_x( 'on', 'Open Sans Text font: on or off', 'wprig' );
+	$montserrat = esc_html_x( 'on', 'Montserrat font: on or off', 'wprig' );
 
 	$font_families = array();
 
 	if ( 'off' !== $roboto ) {
-		$font_families[] = 'Roboto:400,400i,700,700i';
+		$font_families[] = 'Roboto:400, 400i, 700, 700i';
 	}
 
-	if ( 'off' !== $open_sans ) {
-		$font_families[] = 'Open Sans:400,400i,600,600i';
+	if ( 'off' !== $montserrat ) {
+		$font_families[] = 'Montserrat:500, 500i, 700, 700i';
 	}
 
-	if ( in_array( 'on', array( $roboto, $open_sans ) ) ) {
+	if ( in_array( 'on', array( $roboto, $montserrat ) ) ) {
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
 			'subset' => urlencode( 'latin,latin-ext' ),
@@ -259,7 +260,6 @@ function wprig_fonts_url() {
 	return esc_url_raw( $fonts_url );
 
 }
-
 /**
  * Add preconnect for Google Fonts.
  *
@@ -320,19 +320,27 @@ function wprig_styles() {
 
 	// Enqueue main stylesheet.
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
-	wp_enqueue_style( 'wprig-stripe-menu', get_theme_file_uri( '/css/stripe-menu.css' ), array(), '20190326' );
+	wp_enqueue_style( 'js16-side-menu', get_theme_file_uri( '/css/side_menu.css' ), array( 'wprig-base-style' ), '20180514' );
 
 	// Register component styles that are printed as needed.
-	wp_register_style( 'wprig-comments', get_theme_file_uri( '/css/comments.css' ), array(), '20180514' );
 	wp_register_style( 'wprig-content', get_theme_file_uri( '/css/content.css' ), array(), '20180514' );
 	wp_register_style( 'wprig-sidebar', get_theme_file_uri( '/css/sidebar.css' ), array(), '20180514' );
 	wp_register_style( 'wprig-widgets', get_theme_file_uri( '/css/widgets.css' ), array(), '20180514' );
 	wp_register_style( 'wprig-front-page', get_theme_file_uri( '/css/front-page.css' ), array(), '20180514' );
-	wp_register_style( 'wprig-experimental', get_theme_file_uri( '/css/experimental.css' ), array(), '20190401' );
 }
 add_action( 'wp_enqueue_scripts', 'wprig_styles' );
 
-
+/**
+ * Only enqueue for the front-page
+ */
+function conditional_scripts() {
+	if ( is_page( 2 ) ) {
+		wp_enqueue_script( 'splittext', '//s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText.min.js', array(), '20190514', false );
+		wp_enqueue_script( 'tweenmax', '//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js', array( 'splittext' ), '20190514', false );
+		wp_script_add_data( 'tweenmax', 'defer', false );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'conditional_scripts' );
 /**
  * Enqueue scripts.
  */
@@ -343,24 +351,27 @@ function wprig_scripts() {
 		return;
 	}
 
-	// Enqueue the navigation script.
-	// wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
-	// wp_script_add_data( 'wprig-navigation', 'async', true );
-	// wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
-	// 'expand'   => __( 'Expand child menu', 'wprig' ),
-	// 'collapse' => __( 'Collapse child menu', 'wprig' ),
-	// ));!
-	// Enqueue skip-link-focus script.
-	// wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );
-	// wp_script_add_data( 'wprig-skip-link-focus-fix', 'defer', true );
-	// Enqueue comment script on singular post/page views only.
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	// Enqueue the navigation script - but only on pages that utilize the primary menu.
+	if ( has_nav_menu( 'primary' ) ) {
+		wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
+		wp_script_add_data( 'wprig-navigation', 'async', true );
+		wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
+			'expand'   => __( 'Expand child menu', 'wprig' ),
+			'collapse' => __( 'Collapse child menu', 'wprig' ),
+		));
+
+		// Enqueue skip-link-focus script.
+		wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );
+		wp_script_add_data( 'wprig-skip-link-focus-fix', 'defer', true );
 	}
 
 }
 add_action( 'wp_enqueue_scripts', 'wprig_scripts' );
 
+/**
+ * Custom side menu.
+ */
+require get_template_directory() . '/inc/class-side-walker-nav-menu.php';
 /**
  * Custom responsive image sizes.
  */
@@ -369,12 +380,8 @@ require get_template_directory() . '/inc/image-sizes.php';
 /**
  * Implement the Custom Header feature.
  */
-// require get_template_directory() . '/pluggable/custom-header.php'; !
-/* ======= IMPLEMENT THE SIDE WALKER NAV MENU. ======= */
-/**
- * Implement the Stripe Like Menu
- */
-require get_template_directory() . '/inc/class-stripe-walker-nav-menu.php';
+require get_template_directory() . '/pluggable/custom-header.php';
+
 /**
  * Custom template tags for this theme.
  */
@@ -384,6 +391,12 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Custom stylesheets only in admin or on login pages.
+ */
+require get_template_directory() . '/inc/custom-admin-styles.php';
+
 
 /**
  * Customizer additions.
@@ -398,18 +411,60 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/pluggable/lazyload/lazyload.php';
 
 /**
- * Only Enque experimental.CSS on page 932
+ * Output data nicely for debugging.
  *
- * @param number $page ID of the page you want to enqueue this css for.
+ * @param string $data The data I'd like to print out $ Debug.
  * @return void
  */
-function jsco_is_page( $page ) {
-	$page = 932;
-	// only used on page 932.
-	if ( is_page( $page ) ) {
-		wp_enqueue_style( 'wprig-experimental' );
-	} else {
-		return;
-	}
+function pr( $data ) {
+	echo '<pre>';
+	print_r( $data );
+	echo '</pre>';
 }
-add_action( 'wp_enqueue_scripts', 'jsco_is_page', 80 );
+
+$about_us_copy     = 'Since 1910, Jones Sign Company has provided industry-leading design, manufacturing, installation, & maintenance of signage, lighting, & architectural elements to construction companies, design firms, national brands, & local clientele.';
+
+/**
+ * Dequeue the emoji that come along with WordPress.
+ */
+require get_template_directory() . '/inc/disable-emoji.php';
+require get_template_directory() . '/inc/locations-rich-snippet-all.php';
+require get_template_directory() . '/inc/locations-rich-snippet-single.php';
+
+$html_whitelist = array(
+	'a' => array(
+		'href' => array(),
+		'title' => array(),
+	),
+	'br' => array(),
+	'em' => array(),
+	'strong' => array(),
+	'section' => array(
+		'class' => true,
+		'id' => true,
+	),
+	'input' => array(
+		'class' => true,
+		'id' => true,
+		'name' => true,
+	),
+	'label' => array(
+		'class' => true,
+		'id' => true,
+	),
+	'option' => array(
+		'class' => true,
+		'id' => true,
+		'selected' => true,
+		'disabled' => true,
+	),
+	'select' => array(
+		'class' => true,
+		'id' => true,
+		'name' => true,
+	),
+	'div' => array(
+		'class' => true,
+		'id' => true,
+	),
+);

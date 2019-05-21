@@ -148,32 +148,8 @@ function wprig_post_tags() {
 		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'wprig' ) );
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'wprig' ) . ' </span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="chip deep-orange darken-2 gray-text text-darken-4">' . esc_html__( 'Tagged %1$s', 'wprig' ) . ' </span>', $tags_list ); // WPCS: XSS OK.
 		}
-	}
-}
-
-/**
- * Prints comments link when comments are enabled.
- */
-function wprig_comments_link() {
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		comments_popup_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: post title */
-					__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'wprig' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
-		echo ' </span>';
 	}
 }
 

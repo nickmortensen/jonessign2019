@@ -12,7 +12,7 @@
  * @package wprig
  */
 
-get_header('stripe'); ?>
+get_header(); ?>
 
 	<main id="primary" class="site-main">
 

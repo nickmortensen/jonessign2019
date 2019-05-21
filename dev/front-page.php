@@ -1,61 +1,60 @@
 <?php
 /**
- * The main template file
+ * Render your site front page, whether the front page displays the blog posts index or a static page.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#front-page-display
  *
  * @package wprig
  */
 
-get_header('stripe'); ?>
+get_header( 'better' );
 
-	<main id="primary" class="site-main">
+/*
+* Include the component stylesheet for the content.
+* This call runs only once on index and archive pages.
+* At some point, override functionality should be built in similar to the template part below.
+*/
+// wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If this was already done it will be skipped.
+$header = 1007;
+$image_attr = [ 'class' => 'homepage-header img-responsive', 'data-caption' => 'minnesota united' ];
+$image = wp_get_attachment_image_src( $header, 'sixteen-nine', false, $image_attr );
+// pr( $image );
+// NOTE THAT THE POST I AM GOING TO TRY WITH IS 1006.
 
-	<?php
+wp_print_styles( array( 'wprig-front-page', 'wprig-content') );
+?>
+<style>
+	body {
+		margin: 0px !important;
+	}
+.head {
+	min-width: 100vw;
+	min-height: 90vh;
+	/* background-color: red; */
+	background-size: cover;
+	background-repeat: none;
+	position:relative;
+}
+h1 {
+	position: absolute;
+	line-height: 154px;
+	top:40%;
+	left: 18%;
+	color: red;
+	mix-blend-mode: lighten;
+	padding: 0;
+	margin: 0;
+	line-height: 0.5;
+	font-family: "open sans";
+}
+</style>
+<section class="head" style="background-image: url(<?php echo esc_url( $image[0] ); ?>);">
 
-	if ( have_posts() ) :
+<h1>Jones Sign Co</h1>
 
-		/**
-		 * Include the component stylesheet for the content.
-		 * This call runs only once on index and archive pages.
-		 * At some point, override functionality should be built in similar to the template part below.
-		 */
-		wp_print_styles( array( 'wprig-content' ) ); // Note: If this was already done it will be skipped.
-
-		/* Display the appropriate header when required. */
-		wprig_index_header();
-
-		/* Start the Loop. */
-		while ( have_posts() ) :
-			the_post();
-
-			/*
-			 * Include the Post-Type-specific template for the content.
-			 * If you want to override this in a child theme, then include a file
-			 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-			 */
-			get_template_part( 'template-parts/content', get_post_type() );
-
-		endwhile;
-
-		if ( ! is_singular() ) :
-			the_posts_navigation();
-		endif;
-
-	else :
-
-		get_template_part( 'template-parts/content', 'none' );
-
-	endif;
-	?>
-
-	</main><!-- #primary -->
+</section>
+<div style="margin-left: 150px;">
+</div>
 
 <?php
-get_sidebar();
 get_footer();

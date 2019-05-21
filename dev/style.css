@@ -1,13 +1,13 @@
 /*!
-Theme Name: Jones Sign 2019
-Theme URI: https://github.com/nickmortensen/jones2019/
-Author: Nick Mortensen et.al.
-Author URI: https://github.com/nickmortensen/
+Theme Name: Jones Sign
+Theme URI: https://github.com/js19/js19/
+Author: Morten Rand-Hendriksen et.al.
+Author URI: https://github.com/js19/js19/
 Description: A progressive theme development rig for WordPress.
 Version: 1.0.4
 License: GNU General Public License v3 or later
 License URI: LICENSE
-Text Domain: jones
+Text Domain: js19
 Tags: translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -33,7 +33,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 # Infinite scroll
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-# Normalize
+# Normalize PLUS
 --------------------------------------------------------------*/
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 
@@ -53,10 +53,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /* Sections
    ========================================================================== */
 
-:root {
-	overflow-x: hidden;
-	height: 100%
-}
 /**
  * Remove the margin in all browsers.
  */
@@ -112,7 +108,6 @@ pre {
 
 a {
 	background-color: transparent;
-	text-decoration: none;
 }
 
 /**
@@ -570,11 +565,15 @@ hr {
 
 ul, ol {
 	margin: 0 0 1.5em 3em;
-	list-style: none;
-
 }
 
+ul {
+	list-style: disc;
+}
 
+ol {
+	list-style: decimal;
+}
 
 li > ul,
 li > ol {
@@ -750,7 +749,7 @@ textarea {
 }
 
 .site-title a {
-
+	text-decoration: none;
 	color: inherit;
 }
 
@@ -792,6 +791,7 @@ textarea {
 	display: block;
 	width: 100%;
 	padding: .5em 1em .5em 0;
+	text-decoration: none;
 	color: black;
 }
 

@@ -110,7 +110,6 @@
 		<exclude name="PHPCompatibility.PHP.NewFunctions.random_intFound"/>
 		<exclude name="PHPCompatibility.PHP.NewFunctions.random_bytesFound"/>
 		<exclude name="PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound"/>
-
 		<exclude name="PHPCompatibility.PHP.NewInterfaces.jsonserializableFound"/>
 	</rule>
 
@@ -119,6 +118,11 @@
 		<properties>
 			<property name="functionWhitelist" type="array" value="mysql_to_rfc3339"/>
 		</properties>
+	</rule>
+
+	<rule ref="Squiz.Commenting">
+		<exclude name="Squiz.Commenting.InlineComment"/>
+		<exclude name="Squiz.Commenting.PostStatementComment.Found"/>
 	</rule>
 
 </ruleset>

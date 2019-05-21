@@ -22,7 +22,7 @@ import phpcs from 'gulp-phpcs';
 import postcss from 'gulp-postcss';
 import print from 'gulp-print';
 import replace from 'gulp-string-replace';
-import requireUncached from 'require-uncached';
+import importFresh from 'require-uncached';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import sort from 'gulp-sort';
@@ -96,7 +96,7 @@ function serve(done) {
 
 // Reload the live site:
 function reload(done) {
-	config = requireUncached('./dev/config/themeConfig.js');
+	config = importFresh('./dev/config/themeConfig.js');
 	if (config.dev.browserSync.live) {
 		if (server.paused) {
 			server.resume();
@@ -113,7 +113,7 @@ function reload(done) {
  * PHP via PHP Code Sniffer.
  */
 export function php() {
-	config = requireUncached('./dev/config/themeConfig.js');
+	config = importFresh('./dev/config/themeConfig.js');
 	// Check if theme slug has been updated.
 	let isRebuild = themeConfig.isFirstRun ||
 		( themeConfig.slug !== config.theme.slug ) ||
@@ -160,10 +160,10 @@ export function sassStyles() {
  * CSS via PostCSS + CSSNext (includes Autoprefixer by default).
  */
 export function styles() {
-	config = requireUncached('./dev/config/themeConfig.js');
+	config = importFresh('./dev/config/themeConfig.js');
 
 	// Reload cssVars every time the task runs.
-	let cssVars = requireUncached(paths.config.cssVars)
+	let cssVars = importFresh(paths.config.cssVars)
 
 	return gulp.src(paths.styles.src)
 	.pipe(print())
@@ -202,7 +202,7 @@ export function styles() {
  * JavaScript via Babel, ESlint, and uglify.
  */
 export function scripts() {
-	config = requireUncached('./dev/config/themeConfig.js');
+	config = importFresh('./dev/config/themeConfig.js');
 	return gulp	.src(paths.scripts.src)
 	.pipe(newer(paths.scripts.dest))
 	.pipe(eslint())

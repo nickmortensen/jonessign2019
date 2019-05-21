@@ -1,0 +1,242 @@
+// @link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mixins
+// NOTE // comments won't appear in compiled but /**/ will
+@mixin flexbox {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: flex;
+}
+// SAME AS ABOVE
+@mixin flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: -moz-flex;
+	display: flex;
+}
+@mixin inline-flex {
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+}
+
+// direction - default is 'row', other options are 'row-reverse', 'column', 'column-reverse'
+
+@mixin flex-direction($value: row) {
+	@if $value == row-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: horizontal;
+		-moz-box-direction: reverse;
+		-moz-box-orient: horizontal;
+	} @else if $value == column {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: normal;
+		-moz-box-orient: vertical;
+	} @else if $value == column-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: vertical;
+		-moz-box-direction: reverse;
+		-moz-box-orient: vertical;
+	} @else {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+		-moz-box-direction: normal;
+		-moz-box-orient: horizontal;
+	}
+		-webkit-flex-direction: $value;
+		-ms-flex-direction: $value;
+		flex-direction: $value;
+}
+// WRAP OPTIONS FOR FLEXBOX
+// OPTIONS 'nowrap' (default) | 'wrap' | 'wrap-reverse'
+@mixin flex-wrap($value: nowrap) {
+	// No Webkit/FF Box fallback.
+	-webkit-flex-wrap: $value;
+	@if $value == nowrap {
+		-ms-flex-wrap: none;
+	} @else {
+		-ms-flex-wrap: $value;
+	}
+	flex-wrap: $value;
+}
+// ======= FLEX FLOW SHORTHAND
+// The flex-flow property is shorthand for setting the flex-direction & flex-wrap properties,
+// which together define the flex container's main and cross axes.
+// Values: row (default) | nowrap
+
+@mixin flex-flow($values: (row nowrap)) {
+	// No Webkit/FF Box fallback.
+	-webkit-flex-flow: $values;
+	-ms-flex-flow: $values;
+	flex-flow: $values;
+}
+
+
+// ======= FLEXBOX ORDER
+// The 'order' property controls the order in which flex items appear within their flex container
+// by assigning them to ordinal groups.
+// Value: any integer (0 is the default)
+
+@mixin order($int: 0) {
+	-webkit-box-ordinal-group: $int + 1;
+	-moz-box-ordinal-group: $int + 1;
+	-webkit-order: $int;
+	-ms-flex-order: $int;
+	order: $int;
+}
+
+
+// ======= FLEXBOX GROW
+// Sets the 'flex-grow' factor. Negative numbers are invalid
+// Value: any integer (0 is the default)
+@mixin flex-grow($int: 1) {
+	-webkit-box-flex: $int;
+	-moz-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-ms-flex: $int;
+	flex-grow: $int;
+}
+
+// ======= FLEXBOX SHRINK
+// Sets the 'flex-shrink' factor. Negative numbers are invalid.
+// Value: any integer (0 is the default)
+@mixin flex-shrink($int: 0) {
+	-webkit-flex-shrink: $int;
+	-moz-flex-shrink: $int;
+	-ms-flex: $int;
+	flex-shrink: $int;
+}
+
+// ======= FLEXBOX BASIS
+// Sets the 'flex basis'. Negative lengths are invalid.
+// Values: See the 'flex basis' reference (the default is auto)
+// Spec: https://drafts.csswg.org/css-flexbox/#flex-basis-property
+
+@mixin flex-basis($value: auto) {
+	-webkit-flex-basis: $value;
+	flex-basis: $value;
+}
+
+// ======= FLEXBOX "FLEX" (SHORTHAND)
+// The flex property specifies the components of a
+// flexible length; flex-grow factor, flex-shrink factor, and the flex-basis.
+// When an element is a flex item, flex is consulted instead of the main size property to determine the main size of the element.
+//  If an element is not a flex item, flex has no effect
+@mixin flex($fg: 1, $fs: 0, $fb: auto) {
+
+	// Set a variable to be used by box-flex properties
+	$fg-boxflex: $fg;
+
+	// 'Box-Flex' only supports a 'flex-grow' value so lets grab the
+	// first item in the list and just return that.
+	@if type-of($fg) == 'list' {
+		$fg-boxflex: nth($fg, 1);
+	}
+
+	-webkit-box: $fg-boxflex;
+	-moz-box: $fg-boxflex;
+	-webkit-flex: $fg $fs $fb;
+	-ms-flexbox: $fg $fs $fb;
+	flex: $fg $fs $fb;
+}
+
+// ======== FLEXBOX JUSTIFY CONTENT
+// MAIN AXIS -- HORIZONTAL FOR "ROW" VERTICAL FOR "COLUMN"
+// NOTE: space-* is NOT supported in older syntaxes
+// Values: 'flex-start' (default) | 'flex-end' | 'center' | 'space-between' | 'space-around'
+@mixin justify-content($value: flex-start) {
+
+	@if $value == flex-start {
+		-webkit-box-pack: start;
+		-moz-box-pack: start;
+		-ms-flex-pack: start;
+	} @else if $value == flex-end {
+		-webkit-box-pack: end;
+		-moz-box-pack: end;
+		-ms-flex-pack: end;
+	} @else if $value == space-between {
+		-webkit-box-pack: justify;
+		-moz-box-pack: justify;
+		-ms-flex-pack: justify;
+	} @else if $value == space-around {
+		-ms-flex-pack: distribute;
+	} @else {
+		-webkit-box-pack: $value;
+		-moz-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	justify-content: $value;
+}
+
+// ======= FLEXBOX ALIGN ITEMS
+// HOW ITEMS SHOULD ALIGN ON THE CROSS (NOT MAIN) AXIS
+// Values: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' (default)
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		-webkit-box-align: start;
+		-moz-box-align: start;
+		-ms-flex-align: start;
+	} @else if $value == flex-end {
+		-webkit-box-align: end;
+		-moz-box-align: end;
+		-ms-flex-align: end;
+	} @else {
+		-webkit-box-align: $value;
+		-moz-box-align: $value;
+		-ms-flex-align: $value;
+	}
+	-webkit-align-items: $value;
+	align-items: $value;
+}
+
+/* FLEXBOX ALIGN SELF */
+/* Applies to an individual flex item */
+/* Values: auto (default) | flex-start | flex-end | center | baseline | stretch */
+@mixin align-self($value: auto) {
+	// No Webkit Box Fallback.
+	-webkit-align-self: $value;
+	@if $value == flex-start {
+		-ms-flex-item-align: start;
+	} @else if $value == flex-end {
+		-ms-flex-item-align: end;
+	} @else {
+		-ms-flex-item-align: $value;
+	}
+	align-self: $value;
+}
+
+// ======= FLEXBOX ALIGN CONTENT
+// Aligns a flex container's lines within the flex container when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main axis. Note that this property has no effect when the flexbox has only a single line
+// Values: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch' (default)
+@mixin align-content($value: stretch) {
+	// No Webkit Box Fallback.
+	-webkit-align-content: $value;
+	@if $value == flex-start {
+		-ms-flex-line-pack: start;
+	} @else if $value == flex-end {
+		-ms-flex-line-pack: end;
+	} @else {
+		-ms-flex-line-pack: $value;
+	}
+	align-content: $value;
+}
+// ========= END OF MIXINS!!! ==========
+
+
+// gradient of the radial variety
+// $type 'radial' or 'linear'
+@mixin bg-radial($start-colour:rgb(241,112,8), $start-position:40%, $end-colour:#e85208, $end-position:97%) {
+    background: -moz-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, Colour-stop($start-position,$start-colour), Colour-stop($end-position,$end-colour));
+    background: -webkit-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+    background: -o-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+    background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+    background: radial-gradient(circle at center, $start-colour $start-position,$end-colour $end-position);
+}
