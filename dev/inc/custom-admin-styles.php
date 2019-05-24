@@ -1,6 +1,13 @@
 <?php
-
-
+/**
+ * The template for displaying the custom taxonomy 'location' tags
+ *
+ * @note THIS IS SET SO THE LOCATIONS ARE COMPLETE ENTITIES AS FAR AS JSON-LD
+ * @note THERE IS ANOTHER OPTION THAT PUTS JONES SIGN AS AN ORGANIZATION AND ALL THE LOCATIONS AS SUB
+ * @since 1.0.1
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ * @package js19
+ */
 
 if ( is_admin() ) {
 	/**

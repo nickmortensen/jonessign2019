@@ -15,13 +15,15 @@ get_header( 'better' );
 * At some point, override functionality should be built in similar to the template part below.
 */
 // wp_print_styles( array( 'wprig-content', 'wprig-front-page' ) ); // Note: If this was already done it will be skipped.
-$header = 1007;
-$image_attr = [ 'class' => 'homepage-header img-responsive', 'data-caption' => 'minnesota united' ];
-$image = wp_get_attachment_image_src( $header, 'sixteen-nine', false, $image_attr );
+$header     = 1007;
+$image_attr = [
+	'class'        => 'homepage-header img-responsive',
+	'data-caption' => 'minnesota united',
+];
+$image      = wp_get_attachment_image_src( $header, 'sixteen-nine', false, $image_attr );
 // pr( $image );
 // NOTE THAT THE POST I AM GOING TO TRY WITH IS 1006.
-
-wp_print_styles( array( 'wprig-front-page', 'wprig-content') );
+wp_print_styles( array( 'wprig-front-page', 'wprig-content' ) );
 ?>
 <style>
 	body {

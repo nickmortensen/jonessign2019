@@ -136,6 +136,7 @@ JSONLDCLOSE;
 	$json_ld_data  = $json_ld_open;
 	$json_ld_data .= implode( ', ', $locations_data );
 	$json_ld_data .= $json_ld_close;
+	// phpcs:ignore
 	echo $json_ld_data;
 } // END all_schema_organization() definition.
 // Only add this if it is the front page or the all locations page.
