@@ -37,9 +37,13 @@
 
 ?>
 
+<!-- this is the deafult footer for the site -->
+
 <footer id="colophon" class="site-footer">
 <section id="contains-locations-dropdown">
 <?php
+
+/** I may not have to make this call to the database considering I already made it within the header to output the JSON-Ld */
 	// phpcs:disable
 	$args = array(
 		'taxonomy'   => 'location',
@@ -49,10 +53,11 @@
 	$i = 0;
 	$locations_all = [];
 	$locations = get_terms( $args );
+	// pr($locations);
 	$select_open = <<<SELECT
 	<div class="select-outer-div">
 		<div class="select">
-			<select name="slct" id="slct">
+			<select name="location-select" id="slct">
 				<option selected disabled>Choose a location!</option>
 SELECT;
 
@@ -80,6 +85,21 @@ DATA;
 	echo $select_close;
 	// phpcs:enable
 	?>
+</section>
+<section id="single-location">
+<?php 
+$single_location_info = <<<LOCATION
+
+<div id="$location->slug" class="single-location">
+<h2>$location->name</h2>
+</div><!-- end div.single-location -->
+
+LOCATION;
+
+echo $single_location_info;
+
+?>
+
 </section>
 </footer><!-- #colophon -->
 </div><!-- #page -->

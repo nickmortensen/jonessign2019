@@ -50,6 +50,7 @@ function show_all_locations_rich_snippet() {
 	 */
 
 	$json_ld_open = <<<JSONLDOPEN
+	<!-- you are on the homepage -->
 	<script type="application/ld+json">
 
 	{

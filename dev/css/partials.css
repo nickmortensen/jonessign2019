@@ -1,0 +1,28 @@
+/* ======= FLEXBOX MIXINS ======= */
+/* FLEXBOX ALIGN SELF */
+/* Applies to an individual flex item */
+/* Values: auto (default) | flex-start | flex-end | center | baseline | stretch */
+/* ======= END FLEXBOX MIXINS ======= */
+/* Styles  -- should import other styles */
+/* Hide this visually on the page -- good for h1 tags that we don't want to see, but need that sweet, sweet, seo from */
+.make-visually-hidden {
+	position: absolute !important;
+	overflow: hidden !important;
+	clip: rect(0 0 0 0) !important;
+	height: 1px;
+	width: 1px !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	border: 0 !important; }
+
+/* No reason not to have a cool thing happen when people select text, right? */
+::selection {
+	color: var(--near-white);
+	background-color: var(--select-bg); }
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+:--heading {
+	color: var(--darker-gray);
+	margin: 0; }
+
+/*# sourceMappingURL=../../maps/dev/css/partials.css.map */

@@ -276,7 +276,6 @@ function wprig_resource_hints( $urls, $relation_type ) {
 			'crossorigin',
 		);
 	}
-
 	return $urls;
 }
 add_filter( 'wp_resource_hints', 'wprig_resource_hints', 10, 2 );
@@ -331,7 +330,7 @@ function wprig_styles() {
 add_action( 'wp_enqueue_scripts', 'wprig_styles' );
 
 /**
- * Only enqueue for the front-page
+ * Only enqueue these particular javascript files for the front-page of the website.
  */
 function conditional_scripts() {
 	if ( is_page( 2 ) ) {
@@ -428,6 +427,10 @@ $about_us_copy     = 'Since 1910, Jones Sign Company has provided industry-leadi
  * Dequeue the emoji that come along with WordPress.
  */
 require get_template_directory() . '/inc/disable-emoji.php';
+
+/**
+ * Get the rich snippets for all locations on the home page.
+ */
 require get_template_directory() . '/inc/locations-rich-snippet-all.php';
 require get_template_directory() . '/inc/locations-rich-snippet-single.php';
 

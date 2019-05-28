@@ -1,0 +1,10 @@
+@import "partials/mixins.scss";
+@import "partials/general_styles.scss";
+@import "partials/utility.scss";
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading {
+	color: var(--darker-gray);
+	margin: 0;
+}

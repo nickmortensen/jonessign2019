@@ -21,7 +21,7 @@ module.exports = {
       'last 2 versions'
     ],
     debug: {
-      styles: false, // Render verbose CSS for debugging.
+      styles: true, // Render verbose CSS for debugging.
       scripts: false // Render verbose JS for debugging.
     }
   },
