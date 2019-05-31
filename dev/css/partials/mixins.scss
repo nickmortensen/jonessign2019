@@ -1,7 +1,8 @@
-/* ======= FLEXBOX MIXINS ======= */
+@mixin left-pad($left-pad) {
+	padding-left: $left-pad;
+}
 
-// @link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mixins
-// NOTE // comments won't appear in compiled but /**/ will
+// fixes the left padding issue caused by the side menu
 @mixin flexbox {
 	display: -webkit-box;
 	display: -moz-box;
@@ -10,15 +11,13 @@
 	display: -moz-flex;
 	display: flex;
 }
+
+// @link https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mixins
 // SAME AS ABOVE
 @mixin flex {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: -moz-flex;
 	display: flex;
 }
+
 @mixin inline-flex {
 	display: -webkit-inline-box;
 	display: -moz-inline-box;
@@ -30,43 +29,56 @@
 // direction - default is 'row', other options are 'row-reverse', 'column', 'column-reverse'
 
 @mixin flex-direction($value: row) {
-	@if $value == row-reverse {
+	@if $value==row-reverse {
 		-webkit-box-direction: reverse;
 		-webkit-box-orient: horizontal;
 		-moz-box-direction: reverse;
 		-moz-box-orient: horizontal;
-	} @else if $value == column {
+	}
+
+	@else if $value==column {
 		-webkit-box-direction: normal;
 		-webkit-box-orient: vertical;
 		-moz-box-direction: normal;
 		-moz-box-orient: vertical;
-	} @else if $value == column-reverse {
+	}
+
+	@else if $value==column-reverse {
 		-webkit-box-direction: reverse;
 		-webkit-box-orient: vertical;
 		-moz-box-direction: reverse;
 		-moz-box-orient: vertical;
-	} @else {
+	}
+
+	@else {
 		-webkit-box-direction: normal;
 		-webkit-box-orient: horizontal;
 		-moz-box-direction: normal;
 		-moz-box-orient: horizontal;
 	}
-		-webkit-flex-direction: $value;
-		-ms-flex-direction: $value;
-		flex-direction: $value;
+
+	-webkit-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
 }
+
 // WRAP OPTIONS FOR FLEXBOX
 // OPTIONS 'nowrap' (default) | 'wrap' | 'wrap-reverse'
 @mixin flex-wrap($value: nowrap) {
 	// No Webkit/FF Box fallback.
 	-webkit-flex-wrap: $value;
-	@if $value == nowrap {
+
+	@if $value==nowrap {
 		-ms-flex-wrap: none;
-	} @else {
+	}
+
+	@else {
 		-ms-flex-wrap: $value;
 	}
+
 	flex-wrap: $value;
 }
+
 // ======= FLEX FLOW SHORTHAND
 // The flex-flow property is shorthand for setting the flex-direction & flex-wrap properties,
 // which together define the flex container's main and cross axes.
@@ -137,11 +149,10 @@
 
 	// 'Box-Flex' only supports a 'flex-grow' value so lets grab the
 	// first item in the list and just return that.
-	@if type-of($fg) == 'list' {
+	@if type-of($fg)=='list' {
 		$fg-boxflex: nth($fg, 1);
 	}
 
-	-webkit-box: $fg-boxflex;
 	-moz-box: $fg-boxflex;
 	-webkit-flex: $fg $fs $fb;
 	-ms-flexbox: $fg $fs $fb;
@@ -154,25 +165,34 @@
 // Values: 'flex-start' (default) | 'flex-end' | 'center' | 'space-between' | 'space-around'
 @mixin justify-content($value: flex-start) {
 
-	@if $value == flex-start {
+	@if $value==flex-start {
 		-webkit-box-pack: start;
 		-moz-box-pack: start;
 		-ms-flex-pack: start;
-	} @else if $value == flex-end {
+	}
+
+	@else if $value==flex-end {
 		-webkit-box-pack: end;
 		-moz-box-pack: end;
 		-ms-flex-pack: end;
-	} @else if $value == space-between {
+	}
+
+	@else if $value==space-between {
 		-webkit-box-pack: justify;
 		-moz-box-pack: justify;
 		-ms-flex-pack: justify;
-	} @else if $value == space-around {
+	}
+
+	@else if $value==space-around {
 		-ms-flex-pack: distribute;
-	} @else {
+	}
+
+	@else {
 		-webkit-box-pack: $value;
 		-moz-box-pack: $value;
 		-ms-flex-pack: $value;
 	}
+
 	-webkit-justify-content: $value;
 	justify-content: $value;
 }
@@ -181,36 +201,47 @@
 // HOW ITEMS SHOULD ALIGN ON THE CROSS (NOT MAIN) AXIS
 // Values: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' (default)
 @mixin align-items($value: stretch) {
-	@if $value == flex-start {
+	@if $value==flex-start {
 		-webkit-box-align: start;
 		-moz-box-align: start;
 		-ms-flex-align: start;
-	} @else if $value == flex-end {
+	}
+
+	@else if $value==flex-end {
 		-webkit-box-align: end;
 		-moz-box-align: end;
 		-ms-flex-align: end;
-	} @else {
+	}
+
+	@else {
 		-webkit-box-align: $value;
 		-moz-box-align: $value;
 		-ms-flex-align: $value;
 	}
+
 	-webkit-align-items: $value;
 	align-items: $value;
 }
 
-/* FLEXBOX ALIGN SELF */
-/* Applies to an individual flex item */
-/* Values: auto (default) | flex-start | flex-end | center | baseline | stretch */
+// FLEXBOX ALIGN SELF
+// Applies to an individual flex item
+// Values: auto (default) | flex-start | flex-end | center | baseline | stretch
 @mixin align-self($value: auto) {
 	// No Webkit Box Fallback.
 	-webkit-align-self: $value;
-	@if $value == flex-start {
+
+	@if $value==flex-start {
 		-ms-flex-item-align: start;
-	} @else if $value == flex-end {
+	}
+
+	@else if $value==flex-end {
 		-ms-flex-item-align: end;
-	} @else {
+	}
+
+	@else {
 		-ms-flex-item-align: $value;
 	}
+
 	align-self: $value;
 }
 
@@ -220,57 +251,139 @@
 @mixin align-content($value: stretch) {
 	// No Webkit Box Fallback.
 	-webkit-align-content: $value;
-	@if $value == flex-start {
+
+	@if $value==flex-start {
 		-ms-flex-line-pack: start;
-	} @else if $value == flex-end {
+	}
+
+	@else if $value==flex-end {
 		-ms-flex-line-pack: end;
-	} @else {
+	}
+
+	@else {
 		-ms-flex-line-pack: $value;
 	}
+
 	align-content: $value;
 }
+
 // ========= END OF MIXINS!!! ==========
 
 
 // gradient of the radial variety
 // $type 'radial' or 'linear'
-@mixin bg-radial($start-colour:rgb(241,112,8), $start-position:40%, $end-colour:#e85208, $end-position:97%) {
+@mixin bg-radial($start-colour:rgb(241, 112, 8), $start-position:40%, $end-colour:#e85208, $end-position:97%) {
 	background: -moz-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, Colour-stop($start-position,$start-colour), Colour-stop($end-position,$end-colour));
-	background: -webkit-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
-	background: -o-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
-	background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
-	background: radial-gradient(circle at center, $start-colour $start-position,$end-colour $end-position);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, Colour-stop($start-position, $start-colour), Colour-stop($end-position, $end-colour));
+	background: -webkit-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+	background: -o-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+	background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+	background: radial-gradient(circle at center, $start-colour $start-position, $end-colour $end-position);
 }
-/* ======= END FLEXBOX MIXINS ======= */
 
-/* ======= Opacity Mixin for  IE8+ ======= */
+// ======= END FLEXBOX MIXINS =======
+// ======= Opacity Mixin for  IE8+ =======
 // $opacity should be a number between 0 and 1 == so 0.4 would do;
 @mixin opacity($opacity) {
 	opacity: $opacity;
 	$opacity-ie: $opacity * 100;
-	filter: alpha(opacity = $opacity-ie); //IE8
+	filter: alpha(opacity=$opacity-ie); //IE8
 }
-/* ======= positioning mixin ======= */
+
+// ======= positioning mixin =======
 @mixin position($position, $args) {
 	@each $o in top right bottom left {
 		$i: index($args, $o);
-		@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
-		#{$o}: nth($args, $i + 1);
+
+		@if $i and $i+1 <=length($args) and type-of(nth($args, $i + 1))==number {
+			#{$o}: nth($args, $i + 1);
 		}
 	}
+
 	position: $position;
+}
+
+// Positioning helpers - see https://w3bits.com/sass-mixins/
+@mixin absolute($args: '') {
+	@include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+	@include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+	@include position(relative, $args);
+}
+
+// Quickly centre a block element without having to worry about if there is any top or bottom margin already applied
+@mixin push--auto {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+
+// When using ::before and ::after you'll always need these three, so we're saving two lines of code every time you use this.
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+// see https://engageinteractive.co.uk/blog/top-10-scss-mixins
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+	$padding: unquote(($y / $x) * 100 + '%');
+
+	@if $pseudo {
+		&:before {
+			@include pseudo($pos: relative);
+			width: 100%;
+			padding-top: $padding;
+		}
 	}
 
-	// Positioning helpers - see https://w3bits.com/sass-mixins/
-	@mixin absolute($args: '') {
-		@include position(absolute, $args);
+	@else {
+		padding-top: $padding;
+	}
+}
+
+// This mixin takes all the hassle out of creating that triangle you'll see coming out of most traditional tooltips, all without images, you just specify it's colour, how big you want it, the direction it's going to come out of your element and you're done!
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+	@include pseudo($pos: $position);
+	width: 0;
+	height: 0;
+
+	@if $round {
+		border-radius: 3px;
 	}
 
-	@mixin fixed($args: '') {
-		@include position(fixed, $args);
+	@if $direction==down {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+		margin-top: 0 - round($size / 2.5);
 	}
 
-	@mixin relative($args: '') {
-		@include position(relative, $args);
+	@else if $direction==up {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+		margin-bottom: 0 - round($size / 2.5);
+	}
+
+	@else if $direction==right {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-left: $size solid $color;
+		margin-right: -$size;
+	}
+
+	@else if $direction==left {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-right: $size solid $color;
+		margin-left: -$size;
+	}
 }

@@ -54,7 +54,8 @@ function wprig_setup() {
 		* to output valid HTML5.
 		*/
 	add_theme_support(
-		'html5', array(
+		'html5',
+		array(
 			'search-form',
 			'comment-form',
 			'comment-list',
@@ -65,8 +66,10 @@ function wprig_setup() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support(
-		'custom-background', apply_filters(
-			'wprig_custom_background_args', array(
+		'custom-background',
+		apply_filters(
+			'wprig_custom_background_args',
+			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
 			)
@@ -82,7 +85,8 @@ function wprig_setup() {
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support(
-		'custom-logo', array(
+		'custom-logo',
+		array(
 			'height'      => 250,
 			'width'       => 250,
 			'flex-width'  => false,
@@ -108,53 +112,56 @@ function wprig_setup() {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/extensibility/theme-support/#block-color-palettes
 	 */
-	add_theme_support( 'editor-color-palette', array(
+	add_theme_support(
+		'editor-color-palette',
 		array(
-			'name'  => __( 'Dusty orange', 'wprig' ),
-			'slug'  => 'dusty-orange',
-			'color' => '#ed8f5b',
-		),
-		array(
-			'name'  => __( 'Dusty red', 'wprig' ),
-			'slug'  => 'dusty-red',
-			'color' => '#e36d60',
-		),
-		array(
-			'name'  => __( 'Dusty wine', 'wprig' ),
-			'slug'  => 'dusty-wine',
-			'color' => '#9c4368',
-		),
-		array(
-			'name'  => __( 'Dark sunset', 'wprig' ),
-			'slug'  => 'dark-sunset',
-			'color' => '#33223b',
-		),
-		array(
-			'name'  => __( 'Almost black', 'wprig' ),
-			'slug'  => 'almost-black',
-			'color' => '#0a1c28',
-		),
-		array(
-			'name'  => __( 'Dusty water', 'wprig' ),
-			'slug'  => 'dusty-water',
-			'color' => '#41848f',
-		),
-		array(
-			'name'  => __( 'Dusty sky', 'wprig' ),
-			'slug'  => 'dusty-sky',
-			'color' => '#72a7a3',
-		),
-		array(
-			'name'  => __( 'Dusty daylight', 'wprig' ),
-			'slug'  => 'dusty-daylight',
-			'color' => '#97c0b7',
-		),
-		array(
-			'name'  => __( 'Dusty sun', 'wprig' ),
-			'slug'  => 'dusty-sun',
-			'color' => '#eee9d1',
-		),
-	) );
+			array(
+				'name'  => __( 'Dusty orange', 'wprig' ),
+				'slug'  => 'dusty-orange',
+				'color' => '#ed8f5b',
+			),
+			array(
+				'name'  => __( 'Dusty red', 'wprig' ),
+				'slug'  => 'dusty-red',
+				'color' => '#e36d60',
+			),
+			array(
+				'name'  => __( 'Dusty wine', 'wprig' ),
+				'slug'  => 'dusty-wine',
+				'color' => '#9c4368',
+			),
+			array(
+				'name'  => __( 'Dark sunset', 'wprig' ),
+				'slug'  => 'dark-sunset',
+				'color' => '#33223b',
+			),
+			array(
+				'name'  => __( 'Almost black', 'wprig' ),
+				'slug'  => 'almost-black',
+				'color' => '#0a1c28',
+			),
+			array(
+				'name'  => __( 'Dusty water', 'wprig' ),
+				'slug'  => 'dusty-water',
+				'color' => '#41848f',
+			),
+			array(
+				'name'  => __( 'Dusty sky', 'wprig' ),
+				'slug'  => 'dusty-sky',
+				'color' => '#72a7a3',
+			),
+			array(
+				'name'  => __( 'Dusty daylight', 'wprig' ),
+				'slug'  => 'dusty-daylight',
+				'color' => '#97c0b7',
+			),
+			array(
+				'name'  => __( 'Dusty sun', 'wprig' ),
+				'slug'  => 'dusty-sun',
+				'color' => '#eee9d1',
+			),
+		)
+	);
 
 	/**
 	 * Optional: Disable custom colors in block color palettes.
@@ -169,32 +176,35 @@ function wprig_setup() {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/extensibility/theme-support/#block-font-sizes
 	 */
-	add_theme_support( 'editor-font-sizes', array(
+	add_theme_support(
+		'editor-font-sizes',
 		array(
-			'name'      => __( 'small', 'wprig' ),
-			'shortName' => __( 'S', 'wprig' ),
-			'size'      => 16,
-			'slug'      => 'small',
-		),
-		array(
-			'name'      => __( 'regular', 'wprig' ),
-			'shortName' => __( 'M', 'wprig' ),
-			'size'      => 20,
-			'slug'      => 'regular',
-		),
-		array(
-			'name'      => __( 'large', 'wprig' ),
-			'shortName' => __( 'L', 'wprig' ),
-			'size'      => 36,
-			'slug'      => 'large',
-		),
-		array(
-			'name'      => __( 'larger', 'wprig' ),
-			'shortName' => __( 'XL', 'wprig' ),
-			'size'      => 48,
-			'slug'      => 'larger',
-		),
-	) );
+			array(
+				'name'      => __( 'small', 'wprig' ),
+				'shortName' => __( 'S', 'wprig' ),
+				'size'      => 16,
+				'slug'      => 'small',
+			),
+			array(
+				'name'      => __( 'regular', 'wprig' ),
+				'shortName' => __( 'M', 'wprig' ),
+				'size'      => 20,
+				'slug'      => 'regular',
+			),
+			array(
+				'name'      => __( 'large', 'wprig' ),
+				'shortName' => __( 'L', 'wprig' ),
+				'size'      => 36,
+				'slug'      => 'large',
+			),
+			array(
+				'name'      => __( 'larger', 'wprig' ),
+				'shortName' => __( 'XL', 'wprig' ),
+				'size'      => 48,
+				'slug'      => 'larger',
+			),
+		)
+	);
 
 	/**
 	 * Optional: Add AMP support.
@@ -204,9 +214,12 @@ function wprig_setup() {
 	 *
 	 * @link https://wordpress.org/plugins/amp/
 	 */
-	add_theme_support( 'amp', array(
-		'comments_live_list' => true,
-	) );
+	add_theme_support(
+		'amp',
+		array(
+			'comments_live_list' => true,
+		)
+	);
 
 }
 add_action( 'after_setup_theme', 'wprig_setup' );
@@ -226,7 +239,7 @@ add_filter( 'embed_defaults', 'wprig_embed_dimensions' );
 /**
  * Register Google Fonts
  */
-function js19_fonts_url() {
+function wprig_fonts_url() {
 	$fonts_url = '';
 
 	/**
@@ -298,15 +311,17 @@ add_action( 'enqueue_block_editor_assets', 'wprig_gutenberg_styles' );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function wprig_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'wprig' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'wprig' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'wprig' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'wprig' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'wprig_widgets_init' );
 
@@ -319,7 +334,13 @@ function wprig_styles() {
 
 	// Enqueue main stylesheet.
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
-	wp_enqueue_style( 'js16-side-menu', get_theme_file_uri( '/css/side_menu.css' ), array( 'wprig-base-style' ), '20180514' );
+	wp_enqueue_style( 'wprig-side-menu', get_theme_file_uri( '/css/side_menu.css' ), array( 'wprig-base-style' ), '20180514' );
+	wp_enqueue_style( 'wprig-partials', get_theme_file_uri( '/css/partials.css' ), array( 'wprig-base-style' ), '20180527' );
+	// font awesome is for dmoing card expansion effects!
+	wp_enqueue_style( 'wprig-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css', array( 'wprig-base-style' ), '20180527' );
+	wp_enqueue_style( 'wprig-expansion-demo', get_theme_file_uri( '/pluggable/cardexpansion/css/demo.css' ), array( 'wprig-base-style' ), '20180527' );
+	wp_enqueue_style( 'wprig-expansion-demo-card', get_theme_file_uri( '/pluggable/cardexpansion/css/card.css' ), array( 'wprig-expansion-demo' ), '20180527' );
+	wp_enqueue_style( 'wprig-expansion-demo-pattern', get_theme_file_uri( '/pluggable/cardexpansion/css/pattern.css' ), array( 'wprig-expansion-demo-card' ), '20180527' );
 
 	// Register component styles that are printed as needed.
 	wp_register_style( 'wprig-content', get_theme_file_uri( '/css/content.css' ), array(), '20180514' );
@@ -339,6 +360,7 @@ function conditional_scripts() {
 		wp_script_add_data( 'tweenmax', 'defer', false );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'conditional_scripts' );
 /**
  * Enqueue scripts.
@@ -348,20 +370,6 @@ function wprig_scripts() {
 	// If the AMP plugin is active, return early.
 	if ( wprig_is_amp() ) {
 		return;
-	}
-
-	// Enqueue the navigation script - but only on pages that utilize the primary menu.
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_enqueue_script( 'wprig-navigation', get_theme_file_uri( '/js/navigation.js' ), array(), '20180514', false );
-		wp_script_add_data( 'wprig-navigation', 'async', true );
-		wp_localize_script( 'wprig-navigation', 'wprigScreenReaderText', array(
-			'expand'   => __( 'Expand child menu', 'wprig' ),
-			'collapse' => __( 'Collapse child menu', 'wprig' ),
-		));
-
-		// Enqueue skip-link-focus script.
-		wp_enqueue_script( 'wprig-skip-link-focus-fix', get_theme_file_uri( '/js/skip-link-focus-fix.js' ), array(), '20180514', false );
-		wp_script_add_data( 'wprig-skip-link-focus-fix', 'defer', true );
 	}
 
 }
@@ -421,7 +429,7 @@ function pr( $data ) {
 	echo '</pre>';
 }
 
-$about_us_copy     = 'Since 1910, Jones Sign Company has provided industry-leading design, manufacturing, installation, & maintenance of signage, lighting, & architectural elements to construction companies, design firms, national brands, & local clientele.';
+$about_us_copy = 'Since 1910, Jones Sign Company has provided industry-leading design, manufacturing, installation, & maintenance of signage, lighting, & architectural elements to construction companies, design firms, national brands, & local clientele.';
 
 /**
  * Dequeue the emoji that come along with WordPress.
@@ -432,42 +440,85 @@ require get_template_directory() . '/inc/disable-emoji.php';
  * Get the rich snippets for all locations on the home page.
  */
 require get_template_directory() . '/inc/locations-rich-snippet-all.php';
+
+
+/**
+ * Import the function add_single_location_rich_snippet() from get_template_directory() . '/inc/locations-rich-snippet-single.php'.
+ */
 require get_template_directory() . '/inc/locations-rich-snippet-single.php';
+/**
+ * Only instantiate the function on 'location' taxonomy pages.
+ */
+function output_location_snippet() {
+	if ( is_tax( 'location' ) ) {
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo add_single_location_rich_snippet();
+	}
+}
+add_action( 'wp_head', 'output_location_snippet', 9 );
+
+/**
+ * Contains the function to get available openeings at that specific location.
+ */
+require get_template_directory() . '/inc/currently-available-positions-at-this-location.php';
 
 $html_whitelist = array(
-	'a' => array(
-		'href' => array(),
+	'a'       => array(
+		'href'  => array(),
 		'title' => array(),
 	),
-	'br' => array(),
-	'em' => array(),
-	'strong' => array(),
+	'br'      => array(),
+	'em'      => array(),
+	'strong'  => array(),
 	'section' => array(
 		'class' => true,
-		'id' => true,
+		'id'    => true,
 	),
-	'input' => array(
+	'input'   => array(
 		'class' => true,
-		'id' => true,
-		'name' => true,
+		'id'    => true,
+		'name'  => true,
 	),
-	'label' => array(
+	'label'   => array(
 		'class' => true,
-		'id' => true,
+		'id'    => true,
 	),
-	'option' => array(
-		'class' => true,
-		'id' => true,
+	'option'  => array(
+		'class'    => true,
+		'id'       => true,
 		'selected' => true,
 		'disabled' => true,
 	),
-	'select' => array(
+	'select'  => array(
 		'class' => true,
-		'id' => true,
-		'name' => true,
+		'id'    => true,
+		'name'  => true,
 	),
-	'div' => array(
+	'div'     => array(
 		'class' => true,
-		'id' => true,
+		'id'    => true,
 	),
 );
+
+
+/**
+ * Add these scripts to the footer.
+ *
+ * @link https://tympanus.net/codrops/2015/06/18/card-expansion-effect-svg-clippath/.
+ */
+function add_these_scripts_in_footer() {
+	wp_enqueue_script( 'wprig-trianglify', get_theme_file_uri( 'pluggable/cardexpansion/js/vendors/trianglify.min.js' ), array(), '20180514', false );
+	wp_script_add_data( 'wprig-trianglify', 'async', true );
+	wp_enqueue_script( 'wprig-tmax', get_theme_file_uri( 'pluggable/cardexpansion/js/vendors/TweenMax.min.js' ), array( 'wprig-trianglify' ), '20180514', false );
+	wp_script_add_data( 'wprig-tmax', 'async', true );
+	wp_enqueue_script( 'wprig-scroll-to-top', get_theme_file_uri( 'pluggable/cardexpansion/js/vendors/ScrollToPlugin.min.js' ), array( 'wprig-tmax' ), '20180514', false );
+	wp_script_add_data( 'wprig-scroll-to-top', 'async', true );
+	wp_enqueue_script( 'wprig-cash', get_theme_file_uri( 'pluggable/cardexpansion/js/vendors/cash.min.js' ), array( 'wprig-scroll-to-top' ), '20180514', false );
+	wp_script_add_data( 'wprig-cash', 'async', true );
+	wp_enqueue_script( 'wprig-card-circle', get_theme_file_uri( 'pluggable/cardexpansion/js/Card-circle.js' ), array( 'wprig-cash' ), '20180514', false );
+	wp_script_add_data( 'wprig-card-circle', 'async', true );
+	wp_enqueue_script( 'wprig-demo', get_theme_file_uri( 'pluggable/cardexpansion/js/demo.js' ), array( 'wprig-card-circle' ), '20180514', false );
+	wp_script_add_data( 'wprig-demo', 'async', true );
+}
+
+add_action( 'wp_footer', 'add_these_scripts_in_footer' );
