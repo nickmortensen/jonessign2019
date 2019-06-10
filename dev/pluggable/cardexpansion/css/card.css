@@ -1,7 +1,20 @@
 /* CARD */
 :root {
-	--card-closed-text-color: #777778;
+	--card-closed-text-color: #efefef;
 }
+
+.wrapper {
+	overflow: auto;
+	width: 95%;
+	width: 100%;
+	max-width: 1866px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 50em) { }
+
+@media screen and (max-width: 40em) { }
+
 .card {
 	position: relative;
 	float: left;

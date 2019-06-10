@@ -26,7 +26,6 @@ const Card = ( function( window, undefined ) {
    * Card.
    */
   function Card( id, el ) {
-
     this.id = id;
     this._el = el;
 
@@ -56,9 +55,9 @@ const Card = ( function( window, undefined ) {
     // Compose sequence and use duration to overlap tweens.
     this._TL.add( slideContentDown );
     this._TL.add( clipImageIn, 0 );
-    this._TL.add( floatContainer, '-=' + clipImageIn.duration() * 0.6 );
+    this._TL.add( floatContainer, '-=' + clipImageIn.duration() * 0.1 );
     this._TL.add( clipImageOut, '-=' + floatContainer.duration() * 0.3 );
-    this._TL.add( slideContentUp, '-=' + clipImageOut.duration() * 0.6 );
+    this._TL.add( slideContentUp, '-=' + clipImageOut.duration() * 0.2 );
 
 
     this.isOpen = true;
@@ -70,12 +69,10 @@ const Card = ( function( window, undefined ) {
    * @private
    */
   Card.prototype._slideContentDown = function() {
-
     const tween = TweenLite.to( this._content, 0.8, {
       y: window.innerHeight,
       ease: Expo.easeInOut
     });
-
     return tween;
   };
 
@@ -84,18 +81,10 @@ const Card = ( function( window, undefined ) {
    * @private
    */
   Card.prototype._clipImageIn = function() {
-
-    // Circle.
-    const tween = TweenLite.to( this._clip, 0.8, {
-      attr: {
-        r: 60
-      },
-
-      ease: Expo.easeInOut
-
-    });
-
-    return tween;
+    const tweenProperties = {};
+    tweenProperties.attr  = { r: 140 }; // the smallest the circle gets in terms of radius
+    tweenProperties.ease  = Expo.easeInOut;
+    return TweenLite.to( this._clip, 0.9, tweenProperties );
   };
 
   /**
@@ -107,9 +96,8 @@ const Card = ( function( window, undefined ) {
 
     $( document.body ).addClass( CLASSES.bodyHidden );
 
-    const TL = new TimelineLite;
-
-    const rect = this._container.getBoundingClientRect();
+    const TL      = new TimelineLite;
+    const rect    = this._container.getBoundingClientRect();
     const windowW = window.innerWidth;
 
     const track = {
@@ -150,27 +138,21 @@ const Card = ( function( window, undefined ) {
 
     // Circle.
     const radius = $( this._clip ).attr( 'r' );
-
     const tween = this._clipImageIn();
-
     tween.vars.attr.r = radius;
-
     return tween;
   };
 
   /**
-   * Slide content up.
+   * Slide description content of the service up.
    * @private
    */
   Card.prototype._slideContentUp = function() {
-
-    const tween = TweenLite.to( this._content, 2.1, {
+    const tween = TweenLite.to( this._content, 1.1, {
       y: 0,
       clearProps: 'all',
-      // ease: Expo.easeInOut
-      ease: Back.easeInOut.config( 1.7 )
+      ease: Back.easeInOut.config( 1.1 )
     });
-
     return tween;
   };
 
@@ -178,11 +160,8 @@ const Card = ( function( window, undefined ) {
    * Close card.
    */
   Card.prototype.closeCard = function() {
-
     TweenLite.to( this._container, 0.4, {
-      scrollTo: {
-        y: 0
-      },
+      scrollTo: { y: 0 },
       onComplete: function() {
         $( this._container ).css( 'overflow', 'hidden' );
       }.bind( this ),
@@ -190,15 +169,11 @@ const Card = ( function( window, undefined ) {
     });
 
     this._TL.eventCallback( 'onReverseComplete', function() {
-
       TweenLite.set([ this._container, this._content ], {
         clearProps: 'all'
       });
-
       $( document.body ).removeClass( CLASSES.bodyHidden );
-
       this.isOpen = false;
-
     }.bind( this ) );
 
     return this._TL.reverse();
@@ -208,30 +183,24 @@ const Card = ( function( window, undefined ) {
    * Hide card, called for all cards except the selected one.
    */
   Card.prototype.hideCard = function() {
-
-    const tween = TweenLite.to( this._el, 0.4, {
-      scale: 0.8,
-      autoAlpha: 0,
-      transformOrigin: 'center bottom',
-      ease: Expo.easeInOut
-    });
-
-    return tween;
+    const tweenProperties      = {};
+    tweenProperties.scale = 0.8;
+    tweenProperties.autoAlpha = 0;
+    tweenProperties.transformOrigin = 'center bottom';
+    tweenProperties.ease = Expo.easeInOut;
+    return TweenLite.to( this._el, 0.4, tweenProperties );
   };
 
   /**
    * Show card, called for all cards except the selected one.
    */
   Card.prototype.showCard = function() {
-
-    const tween = TweenLite.to( this._el, 0.5, {
-      scale: 1,
-      autoAlpha: 1,
-      clearProps: 'all',
-      ease: Expo.easeInOut
-    });
-
-    return tween;
+    const tweenProperties      = {};
+    tweenProperties.scale      = 1;
+    tweenProperties.autoAlpha  = 1;
+    tweenProperties.clearProps = 'all';
+    tweenProperties.ease       = Expo.easeInOut;
+    return TweenLite.to( this._el, 0.5, tweenProperties );
   };
 
   return Card;

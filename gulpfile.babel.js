@@ -20,8 +20,8 @@ import partialImport from 'postcss-partial-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import phpcs from 'gulp-phpcs';
 import postcss from 'gulp-postcss';
-import print from 'gulp-print';
-import replace from 'gulp-string-replace';
+import print from 'gulp-print'; // show filenames as they are being processed.
+import replace from 'gulp-string-replace'; // replaces 'WP Rig' and 'wprig' with 'JS 19' and 'js19'.
 import requireUncached from 'require-uncached';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
@@ -168,16 +168,17 @@ export function styles() {
 
 	return gulp.src(paths.styles.src)
 	.pipe(print())
-	.pipe(phpcs({
-		bin: 'vendor/bin/phpcs',
-		standard: 'WordPress',
-		warningSeverity: 0
-	}))
+	// no real need to use phpcs in this process if I have it operational through my version of vs code.
+	// .pipe(phpcs({
+	// 	bin: 'vendor/bin/phpcs',
+	// 	standard: 'WordPress',
+	// 	warningSeverity: 0
+	// }))
 	// Log all problems that was found
 	.pipe(phpcs.reporter('log'))
 	.pipe(postcss([
 		postcssPresetEnv({
-			stage: 3,
+			stage: 0,
 			browsers: config.dev.browserslist,
 			features: {
 				'custom-properties': {
@@ -187,6 +188,10 @@ export function styles() {
 				'custom-media-queries': {
 					preserve: false,
 					extensions: cssVars.queries,
+				},
+				'custom-selectors': {
+					preserve: false,
+					extensions: cssVars.selectors,
 				}
 			}
 		})

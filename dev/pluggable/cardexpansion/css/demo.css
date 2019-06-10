@@ -1,14 +1,1 @@
 /* cards wrapper and close btn */
-
-.wrapper {
-	background: #0273b9;
-	overflow: auto;
-	width: 95%;
-	width: 100%;
-	max-width: 1866px;
-	margin: 0 auto;
-}
-
-@media screen and (max-width: 50em) { }
-
-@media screen and (max-width: 40em) { }
