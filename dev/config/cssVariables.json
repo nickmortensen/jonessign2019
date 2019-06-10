@@ -43,5 +43,8 @@
     "wide-menu-query": "screen and (min-width: 37.5em)",
     "content-query": "screen and (min-width: 48em)",
     "sidebar-query": "screen and (min-width: 60em)"
+  },
+  "selectors": {
+    "heading": "h1, h2, h3, h4, h5, h6"
   }
 }
