@@ -335,7 +335,7 @@ function wprig_styles() {
 	// Enqueue main stylesheet.
 	wp_enqueue_style( 'wprig-base-style', get_stylesheet_uri(), array(), '20180514' );
 	wp_enqueue_style( 'wprig-side-menu', get_theme_file_uri( '/css/side_menu.css' ), array( 'wprig-base-style' ), '20180514' );
-	wp_enqueue_style( 'wprig-partials', get_theme_file_uri( '/css/partials.css' ), array( 'wprig-base-style' ), '20180527' );
+	wp_enqueue_style( 'wprig-scss', get_theme_file_uri( '/css/additional_styles.css' ), array( 'wprig-base-style' ), '20180527' );
 	// font awesome is for dmoing card expansion effects!
 	wp_enqueue_style( 'wprig-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css', array( 'wprig-base-style' ), '20180527' );
 	wp_enqueue_style( 'wprig-expansion-demo', get_theme_file_uri( '/pluggable/cardexpansion/css/demo.css' ), array( 'wprig-base-style' ), '20180527' );

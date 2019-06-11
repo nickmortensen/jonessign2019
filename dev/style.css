@@ -84,7 +84,8 @@ h1 {
  */
 
 hr {
-	box-sizing: content-box; /* 1 */
+	-webkit-box-sizing: content-box;
+			box-sizing: content-box; /* 1 */
 	height: 0; /* 1 */
 	overflow: visible; /* 2 */
 }
@@ -118,7 +119,8 @@ a {
 abbr[title] {
 	border-bottom: none; /* 1 */
 	text-decoration: underline; /* 2 */
-	text-decoration: underline dotted; /* 2 */  /* phpcs:ignore */
+	-webkit-text-decoration: underline dotted;
+	        text-decoration: underline dotted; /* 2 */  /* phpcs:ignore */
 }
 
 /**
@@ -271,7 +273,8 @@ fieldset {
  */
 
 legend {
-	box-sizing: border-box; /* 1 */
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box; /* 1 */
 	color: inherit; /* 2 */
 	display: table; /* 1 */
 	max-width: 100%; /* 1 */
@@ -302,7 +305,8 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-	box-sizing: border-box; /* 1 */
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box; /* 1 */
 	padding: 0; /* 2 */
 }
 
@@ -406,7 +410,8 @@ template {
 .screen-reader-text:focus {
 	background-color: #f1f1f1;
 	border-radius: 3px;
-	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	-webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+			box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip: auto !important;
 	color: #21759b;
 	display: block;
@@ -442,7 +447,9 @@ template {
 		display: grid;
 		grid-template-columns: 3fr 1fr;
 		grid-gap: 2rem;
-		justify-content: center;
+		-webkit-box-pack: center;
+			-ms-flex-pack: center;
+				justify-content: center;
 	}
 
 	.site-header {
@@ -538,14 +545,16 @@ big {
 # Elements
 --------------------------------------------------------------*/
 html {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
 	/* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-	box-sizing: inherit;
+	-webkit-box-sizing: inherit;
+			box-sizing: inherit;
 }
 
 body {
@@ -850,10 +859,14 @@ textarea {
 		display: none;
 		position: absolute;
 		top: 100%;
-		flex-direction: column;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+				flex-direction: column;
 		background: white;
 		margin-left: 0;
-		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+		-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 		z-index: 1;
 	}
 
@@ -878,9 +891,14 @@ textarea {
 	}
 
 	.main-navigation .menu {
+		display: -webkit-box;
+		display: -ms-flexbox;
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
+		-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+		-webkit-box-pack: center;
+			-ms-flex-pack: center;
+				justify-content: center;
 	}
 
 	.main-navigation .menu-item-has-children,
@@ -903,7 +921,8 @@ textarea {
 		padding: 0;
 		border: none;
 		border-radius: 0;
-		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
 		overflow: visible;
 	}
 
@@ -917,7 +936,8 @@ textarea {
 		height: 60%;
 		border: solid black;
 		border-width: 0 2px 2px 0;
-		transform: translateY(-50%) rotate(45deg);
+		-webkit-transform: translateY(-50%) rotate(45deg);
+				transform: translateY(-50%) rotate(45deg);
 	}
 
 	.main-navigation ul ul .dropdown,
@@ -927,7 +947,8 @@ textarea {
 	}
 
 	.main-navigation ul ul .dropdown-symbol {
-		transform: rotate(-45deg);
+		-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
 	}
 
 	/*
@@ -938,6 +959,270 @@ textarea {
 	 * supporting browsers (all but IE/Edge) for no-JS context
 	 * (e.g. AMP) See https://caniuse.com/#feat=css-focus-within
 	 */
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
+	.main-navigation li:hover > ul,
+	.main-navigation li.toggled-on > ul,
+	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
+	.main-navigation:not(.has-dropdown-toggle) li[focus-within] > ul {
+		display: block;
+	}
 	.main-navigation li:hover > ul,
 	.main-navigation li.toggled-on > ul,
 	.main-navigation:not(.has-dropdown-toggle) li:focus > ul,
@@ -962,6 +1247,8 @@ textarea {
 }
 
 .nav-links {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 }
 
@@ -969,14 +1256,29 @@ textarea {
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
 	width: 50%;
-	flex: 1 0 50%;
+	-webkit-box-flex: 1;
+		-ms-flex: 1 0 50%;
+			flex: 1 0 50%;
+}
+
+[dir="ltr"] .comment-navigation .nav-next,[dir="ltr"]
+.posts-navigation .nav-next,[dir="ltr"]
+.post-navigation .nav-next {
+	text-align: right;
+}
+
+[dir="rtl"] .comment-navigation .nav-next,[dir="rtl"]
+.posts-navigation .nav-next,[dir="rtl"]
+.post-navigation .nav-next {
+	text-align: left;
 }
 
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-	text-align: end;
-	flex: 1 0 50%;
+	-webkit-box-flex: 1;
+		-ms-flex: 1 0 50%;
+			flex: 1 0 50%;
 }
 
 .post-navigation-sub span {

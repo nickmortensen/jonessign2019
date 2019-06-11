@@ -32,16 +32,18 @@
 		border-top: 1px solid #111;
 		border-bottom: none; } }
 
+/*  experiment with clip path and svg for services */
 .front-page__services {
 	/* CARD */
-	/* on full open */ }
+	/* on full open */
+	/*  end @media only screen and (max-width: 980px) */
+	/*  end @media only screen and (max-width: 400px) */ }
 	.front-page__services .wrapper {
 		display: flex;
 		flex-flow: column nowrap;
 		justify-content: center;
 		align-items: center;
 		overflow: auto;
-		width: 95%;
 		width: 100%;
 		max-width: 1866px;
 		margin: 0 auto; }
@@ -61,7 +63,7 @@
 		overflow-y: auto;
 		width: 100%;
 		height: 100%;
-		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 		/* prevents flicker */
 		-webkit-overflow-scrolling: touch; }
 	.front-page__services .card__container--closed {
@@ -188,5 +190,7 @@
 			padding: 36px;
 			cursor: pointer;
 			transition: all 0.5s cubic-bezier(0.05, 1.23, 0.76, 1.33); } }
+
+/*END .front-page__services*/
 
 /*# sourceMappingURL=../../maps/dev/css/front-page.css.map */

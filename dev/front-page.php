@@ -16,110 +16,7 @@ get_header();
  * @return string $location The full name of the city.
  */
 
-function get_slug_from_city( $city ) {
-	switch ( $city ) {
-		case 'Dallas':
-			$slug = 'dfw';
-			break;
-		case 'Denver':
-			$slug = 'den';
-			break;
-		case 'Green Bay':
-			$slug = 'grb';
-			break;
-		case 'Juárez':
-			$slug = 'mxz';
-			break;
-		case 'Las Vegas':
-			$slug = 'las';
-			break;
-		case 'Los Angeles':
-			$slug = 'lax';
-			break;
-		case 'Miami':
-			$slug = 'mia';
-			break;
-		case 'Minneapolis':
-			$slug = 'msp';
-			break;
-		case 'Philadelphia':
-			$slug = 'phl';
-			break;
-		case 'Reno':
-			$slug = 'rno';
-			break;
-		case 'Richmond':
-			$slug = 'ric';
-			break;
-		case 'San Diego':
-			$slug = 'san';
-			break;
-		case 'Tampa':
-			$slug = 'tpa';
-			break;
-		case 'Tijuana':
-			$slug = 'mxt';
-			break;
-		case 'Virginia Beach':
-			$slug = 'vab';
-			break;
-		default:
-			$slug = 'grb';
-	}//end switch
-	return $slug;
-}
-function get_city_from_slug( $slug ) {
-	switch ( $slug ) {
-		case 'dfw':
-			$location = 'Dallas';
-			break;
-		case 'den':
-			$location = 'Denver';
-			break;
-		case 'grb':
-			$location = 'Green Bay';
-			break;
-		case 'mxz':
-			$location = 'Juárez';
-			break;
-		case 'las':
-			$location = 'Las Vegas';
-			break;
-		case 'lax':
-			$location = 'Los Angeles';
-			break;
-		case 'mia':
-			$location = 'Miami';
-			break;
-		case 'msp':
-			$location = 'Minneapolis';
-			break;
-		case 'phl':
-			$location = 'Philadelphia';
-			break;
-		case 'rno':
-			$location = 'Reno';
-			break;
-		case 'ric':
-			$location = 'Richmond';
-			break;
-		case 'san':
-			$location = 'San Diego';
-			break;
-		case 'tpa':
-			$location = 'Tampa';
-			break;
-		case 'mxt':
-			$location = 'Tijuana';
-			break;
-		case 'vab':
-			$location = 'Virginia Beach';
-			break;
-		default:
-				$location = 'Green Bay';
-	}//end switch
-	return $location;
-}
+
 /*
 * Include the component stylesheet for the content.
 * This call runs only once on index and archive pages.
@@ -148,8 +45,8 @@ $image      = wp_get_attachment_image_src( $header, 'sixteen-nine', false, $imag
 <?php
 $taxonomy = 'location';
 $i = 0;
-$locations = get_terms( [ 'taxonomy' => $taxonomy, 'exclude' => 79, ] );
-foreach( $locations as $location ) {
+$locations = get_terms( [ 'taxonomy' => $taxonomy, 'exclude' => 79 ] );
+foreach ( $locations as $location ) {
 	$queried_object          = $location; // https://codex.wordpress.org/Function_Reference/get_queried_object.
 	$taxonomy_name           = $queried_object->taxonomy;
 	$term_id                 = $queried_object->term_id;
@@ -180,8 +77,8 @@ case '$nearby_city':<br>
 \tbreak;<br>
 
 OP;
-	echo $output;
-}
+	// echo $output;
+}//end foreach
 
 wp_reset_postdata();
 ?>

@@ -16,7 +16,8 @@
 }
 
 .pattern--hidden .polygon {
-	transition-duration: 0ms;
+	-webkit-transition-duration: 0ms;
+			transition-duration: 0ms;
 }
 
 .pattern svg {
@@ -26,7 +27,10 @@
 
 .polygon {
 	transition: -webkit-transform 300ms ease-in-out, opacity 300ms ease-in-out;
+	-webkit-transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+	transition: opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 	transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+	transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
 	-webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transform-origin: center bottom;

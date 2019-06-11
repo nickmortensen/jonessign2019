@@ -35,8 +35,9 @@
     "heavy": "600",
     "heaviest": "900",
     "bold": "700",
-    "bolder": "900",
-    "select-bg": "#aee0e6"
+    "bolder": "800",
+    "select-bg": "#aee0e6",
+    "testing": "#0273b9"
   },
   "queries": {
     "narrow-menu-query": "screen and (max-width: 37.5em)",

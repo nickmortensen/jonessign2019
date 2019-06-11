@@ -73,7 +73,6 @@
 	max-width: auto;
 	padding: 10px 10px 25px;
 	-webkit-transform: translateY(-100%);
-	-ms-transform: translateY(-100%);
 	transform: translateY(-100%);
 }
 
@@ -127,11 +126,12 @@
 
 .meta {
 	font-size: .85em;
-	display: -webkit-flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	padding: 0 0 35px 0;
-
-	-webkit-align-items: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 }
 

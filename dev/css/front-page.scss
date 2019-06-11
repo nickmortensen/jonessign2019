@@ -1,6 +1,3 @@
-// styles exclusive to the homepage created when I use page-id-2 as the homepage
-
-
 @media (--sidebar-query) {
     .site {
         margin: 0 1em;
@@ -53,7 +50,7 @@
 
 }
 
-// experiment with clip path and svg for services
+/*  experiment with clip path and svg for services */
 
 .front-page__services {
 
@@ -71,7 +68,6 @@
     .wrapper {
         @include flex-col-center;
         overflow: auto;
-        width: 95%;
         width: 100%;
         max-width: 1866px;
         margin: 0 auto;
@@ -99,7 +95,7 @@
         overflow-y: auto;
         width: 100%;
         height: 100%;
-        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
         /* prevents flicker */
 
         -webkit-overflow-scrolling: touch;
@@ -260,7 +256,7 @@
         }
     }
 
-    // end @media only screen and (max-width: 980px)
+    /*  end @media only screen and (max-width: 980px) */
 
     @media only screen and (max-width: 580px) {
         .card {
@@ -295,8 +291,8 @@
         }
     }
 
-    // end @media only screen and (max-width: 400px)
+    /*  end @media only screen and (max-width: 400px) */
 
 }
 
-// END .front-page__services
+/*END .front-page__services*/

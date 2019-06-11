@@ -14,101 +14,111 @@ $button-hover: $base-color;
 
 .wp-core-ui .button-primary,
 .wp-core-ui .button {
-	background: unset;
+    background: unset;
 }
+
 .login {
-	background: $base-color;
-	background-image: radial-gradient(circle, $jones-blue 40%, $base-color 97%);
-	background:
-		radial-gradient($jones-blue 3px, transparent 4px),
-		radial-gradient($jones-blue 3px, transparent 4px),
-		linear-gradient(#fff 4px, transparent 0),
-		linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
-		linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
-		#fff;
-	background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
-	background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    background: $base-color;
+    background-image: radial-gradient(circle, $jones-blue 40%, $base-color 97%);
+    background:
+        radial-gradient($jones-blue 3px, transparent 4px),
+        radial-gradient($jones-blue 3px, transparent 4px),
+        linear-gradient(#fff 4px, transparent 0),
+        linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+        linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+        #fff;
+    background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 
-	#login {
-		margin-top: 25vh;
-		min-width: 35vw;
+    #login {
+        margin-top: 25vh;
+        min-width: 35vw;
 
-		>h1 {
-			visibility: hidden;
-		}
-		p.message {
-			background: $lightest;
-		}
+        >h1 {
+            visibility: hidden;
+        }
 
-		p#backtoblog a {
-			position: absolute;
-			left: 15px;
-			bottom: 10px;
-		}
+        p.message {
+            background: $lightest;
+        }
 
-		p#nav {
-			position: absolute;
-			right: 10px;
-			bottom: 10px;
-		}
+        p#backtoblog a {
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+        }
 
-		form#loginform {
-			background-color: $lightest;
-			border: 2px solid $jones-blue;
-			border-radius: 5px;
+        p#nav {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
 
-			p label {
-				color: $highlight-color;
-				letter-spacing: 1px;
-				font-size: 20px;
-				padding-left: 0.4rem;
-			}
+        form#loginform {
+            background-color: $lightest;
+            border: 2px solid $jones-blue;
+            border-radius: 5px;
 
-			input {
-				&:not(.button) {
-					background-color: $lightest;
-					padding-left: 15px;
-				}
-				&#wp-submit.button.button-primary.button-large {
-					background-color: unset;
-					background: unset;
-					text-shadow: unset;
-					background-color: $button;
-					background: $button;
-					display: block;
-					min-width: 100%;
-					min-height: 2.5rem;
-					margin-top: 2rem;
-					font-size: 1.4rem;
-					letter-spacing: 0.2rem;
-					text-transform: uppercase;
-				}
-				&:-webkit-autofill {
-					box-shadow: 0 0 0px 1000px white inset;
-					color: #FFF !important;
-					&:hover,
-					&:focus,
-					&:active {
-						background: $button-hover;
-						transition: background-color 5000s ease-in-out 0s;
-						transition: background-color 5000s ease-in-out 0s;
-					}
-				}
+            p label {
+                color: $highlight-color;
+                letter-spacing: 1px;
+                font-size: 20px;
+                padding-left: 0.4rem;
+            }
 
-			}
+            input {
+                &:not(.button) {
+                    background-color: $lightest;
+                    padding-left: 15px;
+                }
 
-			// end input
+                &#wp-submit.button.button-primary.button-large {
+                    background: unset;
+                    text-shadow: unset;
+                    background-color: $button;
+                    background: $button;
+                    display: block;
+                    min-width: 100%;
+                    min-height: 2.5rem;
+                    margin-top: 2rem;
+                    font-size: 1.4rem;
+                    letter-spacing: 0.2rem;
+                    text-transform: uppercase;
+                }
 
-			// input#user_login {
-			// 	background-color:rgba(255,255,255,0.1);
-			// }
+                &:-webkit-autofill {
+                    box-shadow: 0 0 0px 1000px white inset;
+                    color: #FFF !important;
 
-			// input#user_pass {
-			// 	background-color:rgba(255,255,255,0.1);
-			// }
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background: $button-hover;
+                        transition: background-color 5000s ease-in-out 0s;
+                        -webkit-transition: background-color 5000s ease-in-out 0s;
+                    }
+                }
 
-		} // end form#loginform
+            }
 
-	} // end #login
+            /*  end input */
 
-} // END .login
+            /*  input#user_login { */
+            /*  	background-color:rgba(255,255,255,0.1); */
+            /*  } */
+
+            /*  input#user_pass { */
+            /*  	background-color:rgba(255,255,255,0.1); */
+            /*  } */
+
+        }
+
+        /*  end form#loginform */
+
+    }
+
+    /*  end #login */
+
+}
+
+/*  END .login */

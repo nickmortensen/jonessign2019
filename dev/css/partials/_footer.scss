@@ -1,0 +1,95 @@
+footer {
+    min-width: 100%;
+    background: $jones-blue;
+
+    section#contains-locations-dropdown {
+
+        .select-outer-div {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 10vh;
+
+            /* Reset Select */
+            select {
+                appearance: none;
+                outline: 0;
+                box-shadow: none;
+                border: 0 !important;
+                background-image: none;
+                background-color: $jones-blue;
+                flex: 3;
+                padding: 0 .5em;
+                color: $near-white;
+                cursor: pointer;
+
+                option {
+                    letter-spacing: 4px;
+                }
+
+                /* Remove IE arrow */
+                &:-ms-expand {
+                    display: none;
+                }
+            }
+
+            /* Custom Select */
+            .select {
+                position: relative;
+                display: flex;
+                width: $select-width;
+                height: 3em;
+                line-height: 3;
+                background: $mayoral-gray;
+                overflow: hidden;
+                border-radius: .25em;
+
+
+                /* Arrow */
+                &::after {
+                    color: $near-white;
+                    content: '\25BC'; // arrow on the right to indicate dropdown
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 0 1em;
+                    background: $mayoral-gray;
+                    cursor: pointer;
+                    pointer-events: none;
+                    -webkit-transition: .25s all ease;
+                    -o-transition: .25s all ease;
+                    transition: .25s all ease;
+                }
+
+                /* Transition */
+                &:hover::after {
+                    color: $jones-blue;
+                }
+            }
+        }
+
+        // END .select-outer-div
+    }
+
+    // END section#contains-locations-dropdown
+
+    section#single-location {
+        width: $select-width;
+        margin: 0px auto;
+        max-width: 50%;
+        @include flex-flow(row nowrap);
+
+        >div.single-location {
+            @include flex-flow(column nowrap);
+            @include justify-content(center);
+            @include align-items(center);
+            background: $jones-blue;
+            color: $near-white;
+            opacity: 1;
+            transition: opacity 1.4s ease-in-out;
+        }
+    }
+}
+
+// END footer
