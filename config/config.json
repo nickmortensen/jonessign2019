@@ -1,15 +1,7 @@
 {
-    "theme": {
-        "slug": "jonessign",
-        "name": "Jones Sign",
-        "author": "Nick Mortensen"
-    },
-    "browserSync": {
-        "live": true,
-        "proxyURL": "jonessign.co",
-        "bypassPort": "3057",
-        "https": true,
-        "keyPath": "~/ssl/jonessign.co.key",
-        "certPath": "~/ssl/jonessign.co.crt"
-    }
+  "theme": {
+    "slug": "jonessign",
+    "name": "Jones Sign",
+    "author": "Nick Mortensen"
+  }
 }

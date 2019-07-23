@@ -90,7 +90,12 @@
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-wordpress"
+    "extends": "stylelint-config-wordpress",
+    "rules": {
+      "indentation": "tab",
+      "value-list-comma-newline-after": "never-multi-line",
+      "at-rule-no-unknown": true
+    }
   },
   "scripts": {
     "build": "gulp buildDev",

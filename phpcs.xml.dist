@@ -36,6 +36,14 @@
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
+	<!-- Exclude WP Core folders and files from being checked. -->
+	<exclude-pattern>/docroot/wp-admin/*</exclude-pattern>
+	<exclude-pattern>/docroot/wp-includes/*</exclude-pattern>
+	<exclude-pattern>/docroot/wp-*.php</exclude-pattern>
+	<exclude-pattern>/docroot/index.php</exclude-pattern>
+	<exclude-pattern>/docroot/xmlrpc.php</exclude-pattern>
+	<!-- Exclude minified Javascript files. -->
+	<exclude-pattern>*.min.js</exclude-pattern>
 	<!--
 	#############################################################################
 	USE THE WordPress-Coding-Standards RULESET
@@ -95,5 +103,10 @@
 
 	<config name="testVersion" value="7.0-99.0"/>
 	<rule ref="PHPCompatibility" />
+
+	<rule ref="Squiz.Commenting">
+		<exclude name="Squiz.Commenting.InlineComment"/>
+		<exclude name="Squiz.Commenting.PostStatementComment.Found"/>
+	</rule>
 
 </ruleset>
