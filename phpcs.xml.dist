@@ -36,14 +36,6 @@
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
-	<!-- Exclude WP Core folders and files from being checked. -->
-	<exclude-pattern>/docroot/wp-admin/*</exclude-pattern>
-	<exclude-pattern>/docroot/wp-includes/*</exclude-pattern>
-	<exclude-pattern>/docroot/wp-*.php</exclude-pattern>
-	<exclude-pattern>/docroot/index.php</exclude-pattern>
-	<exclude-pattern>/docroot/xmlrpc.php</exclude-pattern>
-	<!-- Exclude minified Javascript files. -->
-	<exclude-pattern>*.min.js</exclude-pattern>
 	<!--
 	#############################################################################
 	USE THE WordPress-Coding-Standards RULESET
@@ -79,6 +71,34 @@
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
 	</rule>
 
+	<rule ref="PEAR">
+		<exclude name="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+		<exclude name="PEAR.Commenting.ClassComment.MissingAuthorTag"/>
+		<exclude name="PEAR.Commenting.ClassComment.MissingCategoryTag"/>
+		<exclude name="PEAR.Commenting.ClassComment.MissingLicenseTag"/>
+		<exclude name="PEAR.Commenting.ClassComment.MissingLinkTag"/>
+		<exclude name="PEAR.Commenting.ClassComment.MissingPackageTag"/>
+		<exclude name="PEAR.Commenting.FileComment.MissingAuthorTag"/>
+		<exclude name="PEAR.Commenting.FileComment.MissingCategoryTag"/>
+		<exclude name="PEAR.Commenting.FileComment.MissingLicenseTag"/>
+		<exclude name="PEAR.Commenting.FileComment.MissingLinkTag"/>
+		<exclude name="PEAR.Commenting.FileComment.MissingVersion"/>
+		<exclude name="PEAR.Commenting.FunctionComment.MissingReturn"/>
+		<exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace"/>
+		<exclude name="PEAR.Functions.FunctionDeclaration.SpaceAfterFunction"/>
+		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine"/>
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"/>
+		<!-- <exclude name="PEAR.WhiteSpace.DisallowTabIndent.TabsUsed"/> -->
+		<exclude name="PEAR.Commenting.FileComment.InvalidPackage"/>
+		<exclude name="PEAR.Commenting.FileComment.PackageTagOrder"/>
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNoCapital"/>
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
+		<!-- <exclude name=""/>
+		<exclude name=""/>
+		<exclude name=""/> -->
+	</rule>
+
+
 	<!-- Set the minimum supported WP version. This is used by several sniffs.
 		 The minimum version set here should be in line with the minimum WP version
 		 as set in the "Requires at least" tag in the readme.txt file. -->
@@ -102,11 +122,11 @@
 	-->
 
 	<config name="testVersion" value="7.0-99.0"/>
-	<rule ref="PHPCompatibility" />
+	<!-- <rule ref="PHPCompatibility" /> -->
 
-	<rule ref="Squiz.Commenting">
-		<exclude name="Squiz.Commenting.InlineComment"/>
-		<exclude name="Squiz.Commenting.PostStatementComment.Found"/>
-	</rule>
+	<!-- Tabs should represent 4 spaces. -->
+	<arg name="tab-width" value="4"/>
+
+
 
 </ruleset>

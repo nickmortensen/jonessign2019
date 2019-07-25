@@ -87,14 +87,39 @@
     "globals": {
       "jQuery": "readonly",
       "wp": "readonly"
+    },
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "no-console": 0,
+      "space-in-parens": [
+        "error",
+        "never",
+        {
+          "exceptions": [
+            "{}",
+            "[]"
+          ]
+        }
+      ]
     }
   },
   "stylelint": {
     "extends": "stylelint-config-wordpress",
     "rules": {
-      "indentation": "tab",
       "value-list-comma-newline-after": "never-multi-line",
-      "at-rule-no-unknown": true
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "custom-media",
+            "/^custom/"
+          ]
+        }
+      ],
+      "indentation": "tab"
     }
   },
   "scripts": {
@@ -108,5 +133,11 @@
     "test-gulp": "jest gulp/tests",
     "lint": "eslint assets/js/src/",
     "lint-gulp": "eslint gulp/"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [
+    "jonessign"
+  ]
 }

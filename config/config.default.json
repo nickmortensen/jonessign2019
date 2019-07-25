@@ -8,9 +8,9 @@
   "dev": {
     "browserSync": {
       "live": true,
-      "proxyURL": "https://jonessign.co",
-      "bypassPort": "3057",
-      "https": true
+      "proxyURL": "wprig.test:8888",
+      "bypassPort": "8181",
+      "https": false
     },
     "styles": {
       "stage": 3,

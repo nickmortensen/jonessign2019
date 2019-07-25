@@ -3,5 +3,19 @@
     "slug": "jonessign",
     "name": "Jones Sign",
     "author": "Nick Mortensen"
+  },
+  "dev": {
+    "browserSync": {
+      "live": true,
+      "proxyURL": "https://jonessign.co",
+      "bypassPort": "3057",
+      "https": true
+    },
+    "styles": {
+      "stage": 0,
+      "importFrom": [
+        "_custom-media.css"
+      ]
+    }
   }
 }

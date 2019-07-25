@@ -15,7 +15,6 @@ use InvalidArgumentException;
  * This class takes care of initializing theme features and available template tags.
  */
 class Theme {
-
 	/**
 	 * Associative array of theme components, keyed by their slug.
 	 *
@@ -152,6 +151,7 @@ class Theme {
 			new Post_Thumbnails\Component(),
 			new Customizer\Component(),
 			new Styles\Component(),
+			new Related_Posts\Component(),
 		];
 
 		if ( defined( 'JETPACK__VERSION' ) ) {

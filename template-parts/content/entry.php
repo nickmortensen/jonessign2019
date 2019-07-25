@@ -24,6 +24,9 @@ namespace WP_Rig\WP_Rig;
 </article><!-- #post-<?php the_ID(); ?> -->
 
 <?php
+if ( is_single() ) {
+	get_template_part( 'template-parts/content/entry_related' );
+}
 if ( is_singular( get_post_type() ) ) {
 	// Show post navigation only when the post type is 'post' or has an archive.
 	if ( 'post' === get_post_type() || get_post_type_object( get_post_type() )->has_archive ) {

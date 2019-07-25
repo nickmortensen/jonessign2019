@@ -304,10 +304,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				},
 			],
 			'wp-rig-front-page' => [
-				'file' => 'front-page.min.css',
+				'file'             => 'front-page.min.css',
 				'preload_callback' => function() {
 					global $template;
 					return 'front-page.php' === basename( $template );
+				},
+			],
+			'wp-rig-page' => [
+				'file'             => 'page.min.css',
+				'preload_callback' => function() {
+					return is_page();
 				},
 			],
 		];
@@ -357,8 +363,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		$google_fonts = [
-			'Roboto Condensed' => [ '400', '400i', '700', '700i' ],
-			'Crimson Text'     => [ '400', '400i', '600', '600i' ],
+			'Noto Sans TC'       => [ '300', '400', '600', '900' ],
+			'Source Code Pro'    => [ '300', '400', '600', '900' ],
 		];
 
 		/**
