@@ -25,20 +25,20 @@ import {createProdDir, gulpRelativeDest, getThemeConfig} from './utils';
 /**
  * Create the production directory
  */
-export default function prodPrep(done) {
+export default function prodPrep( done ) {
 
     const config = getThemeConfig();
 
     // Error if not in a production environment
     if( ! isProd ){
-        log(colors.red(`${colors.bold('Error:')} the bundle task may only be called from the production environment. Set NODE_ENV to production and try again.`));
-        process.exit(1);
+        log( colors.red( `${colors.bold( 'Error:' )} the bundle task may only be called from the production environment. Set NODE_ENV to production and try again.` ) );
+        process.exit( 1 );
     }
 
     // The dev theme and the prod theme can't have the same name
-    if ( path.basename(prodThemePath) === path.basename(rootPath) ){
-        log(colors.red(`${colors.bold('Error:')} the theme slug cannot be the same as the dev theme directory name.`));
-        process.exit(1);
+    if ( path.basename( prodThemePath ) === path.basename( rootPath ) ){
+        log( colors.red( `${colors.bold( 'Error:' )} the theme slug cannot be the same as the dev theme directory name.` ) );
+        process.exit( 1 );
     }
 
     const requiredConfigUpdates = [
@@ -46,11 +46,11 @@ export default function prodPrep(done) {
         'name',
     ];
 
-    requiredConfigUpdates.map( (requiredConfigField) => {
+    requiredConfigUpdates.map( ( requiredConfigField ) => {
         // Error if config that must be set is still the default value.
-        if ( nameFieldDefaults[requiredConfigField] === config.theme[requiredConfigField] ){
-            log(colors.red(`${colors.bold('Error:')} the theme ${requiredConfigField} must be different than the default value ${nameFieldDefaults[requiredConfigField]}.`));
-            process.exit(1);
+        if ( nameFieldDefaults[requiredConfigField] === config.theme[requiredConfigField]){
+            log( colors.red( `${colors.bold( 'Error:' )} the theme ${requiredConfigField} must be different than the default value ${nameFieldDefaults[requiredConfigField]}.` ) );
+            process.exit( 1 );
         }
 
     });
@@ -61,8 +61,8 @@ export default function prodPrep(done) {
     // Copying misc files to the prod directory
     return pump(
         [
-            src(paths.export.src, {allowEmpty: true}),
-            dest(gulpRelativeDest),
+            src( paths.export.src, {allowEmpty: true}),
+            dest( gulpRelativeDest ),
         ],
 		done
 	);

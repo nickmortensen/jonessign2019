@@ -27,14 +27,26 @@
 	<!-- Check up to 8 files simultanously. -->
 	<arg name="parallel" value="8"/>
 
-	<!-- Only check the PHP, CSS and SCSS files. JS files are checked separately with ESLint. -->
-	<arg name="extensions" value="php,css,scss/css"/>
+	<!-- Only check the PHP files JS files are checked separately with ESLint. -->
+	<arg name="extensions" value="php"/>
+	<!-- to colorize, this is the argument to include -->
+	<arg name="colors"/>
+	 <!--
+    You can hard-code custom php.ini settings into your custom standard.
+    The following tag sets the memory limit to 64M.
+ -->
+ 	<ini name="memory_limit" value="128M"/>
 
 	<!-- Check all files in this directory and the directories below it. -->
 	<file>.</file>
 
-	<exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-content/themes/wprig/node_modules/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-content/themes/wprig/vendor/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-content/themes/wprig/vendor/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-content/plugins/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-content/uploads/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-includes/*</exclude-pattern>
+	<exclude-pattern>/Applications/MAMP/htdocs/jonessign.co/wp-admin/*</exclude-pattern>
 
 	<!--
 	#############################################################################
@@ -88,13 +100,14 @@
 		<exclude name="PEAR.Functions.FunctionDeclaration.SpaceAfterFunction"/>
 		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine"/>
 		<exclude name="PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"/>
-		<!-- <exclude name="PEAR.WhiteSpace.DisallowTabIndent.TabsUsed"/> -->
+		<exclude name="PEAR.WhiteSpace.DisallowTabIndent.TabsUsed"/>
+		<exclude name="PEAR.WhiteSpace.ScopeIndent.IncorrectExact"/>
 		<exclude name="PEAR.Commenting.FileComment.InvalidPackage"/>
 		<exclude name="PEAR.Commenting.FileComment.PackageTagOrder"/>
 		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNoCapital"/>
 		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionNameInvalid"/>
-		<!-- <exclude name=""/>
-		<exclude name=""/>
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.FunctionUnderscore"/>
+		<!--<exclude name=""/>
 		<exclude name=""/> -->
 	</rule>
 
@@ -125,8 +138,28 @@
 	<!-- <rule ref="PHPCompatibility" /> -->
 
 	<!-- Tabs should represent 4 spaces. -->
-	<arg name="tab-width" value="4"/>
+	<!-- <arg name="tab-width" value="4"/> -->
 
-
+	<!-- Lines can be 180 chars long, but never show errors -->
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="240"/>
+			<property name="absoluteLineLimit" value="280"/>
+			<property name="ignoreComments" value="true"/>
+		</properties>
+	</rule>
+ <!--
+    Here we change two messages from the same sniff. Note how the
+    codes are slightly different because the sniff developer has
+    defined both a MaxExceeded message and a TooLong message. In the
+    case of this sniff, one is used for warnings and one is used
+    for errors.
+ -->
+ <rule ref="Generic.Files.LineLength.MaxExceeded">
+  <message>Line contains %2$s chars, which is more than the limit of %1$s</message>
+ </rule>
+ <rule ref="Generic.Files.LineLength.TooLong">
+  <message>Line longer than %s characters; contains %s characters</message>
+ </rule>
 
 </ruleset>

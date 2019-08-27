@@ -5,6 +5,7 @@
  * @package wp_rig
  */
 
+// phpcs: ignoreFile.
 namespace WP_Rig\WP_Rig;
 
 $taxonomies = wp_list_filter(
@@ -22,7 +23,7 @@ $taxonomies = wp_list_filter(
 
 		/* translators: separator between taxonomy terms */
 		$separator = _x( ', ', 'list item separator', 'wp-rig' );
-
+		// phpcs:disable Generic.Formatting.MultipleStatementAlignment.NotSameWarning
 		switch ( $taxonomy->name ) {
 			case 'category':
 				$class            = 'category-links term-links';

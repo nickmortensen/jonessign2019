@@ -16,7 +16,7 @@ import {getStringReplacementTasks} from './utils';
 /**
  * Run string replacement on production files
  */
-export default function prodStringReplace(done) {
+export default function prodStringReplace( done ) {
 
     // Bail if not in production
     if ( ! isProd ) {
@@ -25,9 +25,9 @@ export default function prodStringReplace(done) {
 
     return pump(
         [
-            src(paths.export.stringReplaceSrc),
+            src( paths.export.stringReplaceSrc ),
             getStringReplacementTasks(),
-            dest(paths.export.dest)
+            dest( paths.export.dest )
         ],
 		done
 	);

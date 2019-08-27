@@ -20,7 +20,7 @@ export function cleanCSS() {
 		`!${paths.styles.srcDir}`,
 		`!${paths.styles.srcDir}/**`
 	];
-	return del(delPath);
+	return del( delPath );
 }
 
 /**
@@ -32,5 +32,5 @@ export function cleanJS() {
 		`!${paths.scripts.srcDir}`,
 		`!${paths.scripts.srcDir}/**`
 	];
-	return del(delPath);
+	return del( delPath );
 }

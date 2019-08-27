@@ -17,7 +17,7 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
-    "@wordpress/eslint-plugin": "^2.3.0",
+    "@wordpress/eslint-plugin": "^2.4.0",
     "ajv": "^6.10.0",
     "ansi-colors": "^3.2.4",
     "autoprefixer": "^9.5.1",
@@ -84,30 +84,28 @@
       "node": true,
       "es6": true
     },
+    "rules": {
+		"arrow-parens": ["error", "as-needed"],
+		"comma-dangle": ["error", { "arrays": "always-multiline", "objects": "always-multiline" }],
+		"indent": [ "error", 2 ],
+		"no-console": 0,
+		"no-multi-spaces":"off",
+		"no-unused-vars": 1,
+		"semi": 2,
+		"space-in-parens": [ "error", "always", { "exceptions": [ "{}", "[]" ] } ],
+		"template-curly-spacing": ["error", "never"],
+		"yoda": ["error", "always"]
+    },
     "globals": {
       "jQuery": "readonly",
       "wp": "readonly"
-    },
-    "rules": {
-      "indent": [
-        "error",
-        2
-      ],
-      "no-console": 0,
-      "space-in-parens": [
-        "error",
-        "never",
-        {
-          "exceptions": [
-            "{}",
-            "[]"
-          ]
-        }
-      ]
     }
   },
   "stylelint": {
     "extends": "stylelint-config-wordpress",
+    "ignoreFiles": [
+      "**/*.js"
+    ],
     "rules": {
       "value-list-comma-newline-after": "never-multi-line",
       "at-rule-no-unknown": [

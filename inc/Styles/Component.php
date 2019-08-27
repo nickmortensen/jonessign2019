@@ -316,6 +316,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					return is_page();
 				},
 			],
+			'wp-rig-related'   => [
+				'file'             => 'related.min.css',
+			],
+			'wp-rig-header-jonessign'   => [
+				'file'             => 'header-jonessign.min.css',
+				'global' => true,
+			],
 		];
 
 		/**

@@ -15,11 +15,11 @@ import {paths, gulpPlugins} from './constants';
 /**
  * Optimize images.
  */
-export default function images(done) {
+export default function images( done ) {
     pump([
-        src(paths.images.src),
-        gulpPlugins.newer(paths.images.dest),
+        src( paths.images.src ),
+        gulpPlugins.newer( paths.images.dest ),
         gulpPlugins.imagemin(),
-        dest(paths.images.dest),
-    ], done);
+        dest( paths.images.dest ),
+    ], done );
 }

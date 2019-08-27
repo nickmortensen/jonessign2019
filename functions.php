@@ -64,3 +64,56 @@ require get_template_directory() . '/inc/functions.php';
 
 // Initialize the theme.
 call_user_func( 'WP_Rig\WP_Rig\wp_rig' );
+
+/**
+ * Outputs raw data inside of <pre> tags.
+ *
+ * @param array $content The data to place inside of the '<pre>' tag.
+ */
+function pr( $content ) {
+	echo '<pre>';
+	print_r( $content );
+	echo '</pre>';
+}
+/**
+ * Output this data inside of a '<span>' tag.
+ *
+ * @param string $information The information to surround with a span tag.
+ * @param array $attributes An array of attributes to go inside of the span tag.
+ */
+function output_inside_span( $information, $attributes = [] ) {
+	$output = '<span';
+	if ( !empty( $attributes ) ) {
+		foreach ($attributes as $attribute => $value) {
+			$output .= ' ' . $attribute . '="' . $value . '"';
+		}
+	}
+	$output .= '>';
+	$output .= $information;
+	$output .= '</span>';
+	return $output;
+}
+if ( ! function_exists( 'get_attachment_info' ) ) {
+	/**
+	 * Output data about an image for use in alt tags, etc.
+	 *
+	 * @param integer $attachment_id The post_id of the image we want information about.
+	 *
+	 * @return array An array with the alt, caption, description, href, src, title of the image.
+	 */
+	function get_attachment_info( $attachment_id ) {
+		$attachment            = get_post( $attachment_id );
+		$output                = [];
+		$output['alt']         = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+		$output['caption']     = ucfirst( $attachment->post_excerpt );
+		$output['description'] = ucfirst( $attachment->post_content );
+		$output['href']        = get_permalink( $attachment->ID );
+		$output['src']         = $attachment->guid;
+		$output['title']       = $attachment->post_title;
+		return $output;
+	}
+}
+
+/**
+ * Initial way of putting the js for googlemaps into a page
+ */

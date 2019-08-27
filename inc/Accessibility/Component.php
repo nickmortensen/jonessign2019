@@ -88,7 +88,7 @@ class Component implements Component_Interface {
 		if ( wp_rig()->is_amp() ) {
 			return;
 		}
-
+// phpcs:disable Generic.Files.LineLength.MaxExceeded
 		// Print the minified script.
 		?>
 		<script>

@@ -126,7 +126,7 @@ class Theme {
 	}
 
 	/**
-	 * Gets the default theme components.
+	 * Gets the default theme components. Any new components created for this theme must be added below.
 	 *
 	 * This method is called if no components are passed to the constructor, which is the common scenario.
 	 *

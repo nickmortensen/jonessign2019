@@ -16,7 +16,7 @@ import {getThemeConfig} from './utils';
 /**
  * Generate translation files.
  */
-export default function translate(done) {
+export default function translate( done ) {
     const config = getThemeConfig();
 
     // Don't generate .pot file on production if the config flag is false
@@ -25,14 +25,14 @@ export default function translate(done) {
     }
 
 	pump([
-        src(paths.languages.src),
+        src( paths.languages.src ),
         gulpPlugins.sort(),
         gulpPlugins.wpPot({
-            domain: (isProd) ? config.theme.slug : nameFieldDefaults.slug,
-            package: (isProd) ? config.theme.name : nameFieldDefaults.name,
-            bugReport: (isProd) ? config.theme.name : nameFieldDefaults.name,
-            lastTranslator: (isProd) ? config.theme.author : nameFieldDefaults.author
+            domain: ( isProd ) ? config.theme.slug : nameFieldDefaults.slug,
+            package: ( isProd ) ? config.theme.name : nameFieldDefaults.name,
+            bugReport: ( isProd ) ? config.theme.name : nameFieldDefaults.name,
+            lastTranslator: ( isProd ) ? config.theme.author : nameFieldDefaults.author
         }),
-        dest(paths.languages.dest),
-    ], done);
+        dest( paths.languages.dest ),
+    ], done );
 }

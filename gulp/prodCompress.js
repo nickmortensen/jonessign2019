@@ -17,7 +17,7 @@ import {getThemeConfig} from './utils';
 /**
  * Create the zip file
  */
-export default function prodCompress(done) {
+export default function prodCompress( done ) {
     const config = getThemeConfig();
 
     // Bail if the compress option is false
@@ -27,9 +27,9 @@ export default function prodCompress(done) {
 
     return pump(
         [
-            src(`${prodThemePath}/**/*`),
-            gulpPlugins.zip(`${config.theme.slug}.zip`),
-            dest(path.normalize(`${prodThemePath}/../`))
+            src( `${prodThemePath}/**/*` ),
+            gulpPlugins.zip( `${config.theme.slug}.zip` ),
+            dest( path.normalize( `${prodThemePath}/../` ) )
         ],
 		done
 	);

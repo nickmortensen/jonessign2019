@@ -12,15 +12,15 @@ import { pipeline } from 'mississippi';
 /**
  * Internal dependencies
  */
-import {paths, gulpPlugins, isProd} from './constants';
-import {getThemeConfig, getStringReplacementTasks, logError} from './utils';
+import { paths, gulpPlugins, isProd } from './constants';
+import { getThemeConfig, getStringReplacementTasks, logError } from './utils';
 
 export function scriptsBeforeReplacementStream() {
 
 	// Return a single stream containing all the
 	// before replacement functionality
 	return pipeline.obj([
-		logError('JavaScript'),
+		logError( 'JavaScript' ),
 		gulpPlugins.newer({
 			dest: paths.scripts.dest,
 			extra: [paths.config.themeConfig]
@@ -54,10 +54,10 @@ export function scriptsAfterReplacementStream() {
 /**
  * JavaScript via Babel, ESlint, and uglify.
  */
-export default function scripts(done) {
+export default function scripts( done ) {
 
 	return pump([
-		src(paths.scripts.src, {sourcemaps: !isProd}),
+		src( paths.scripts.src, {sourcemaps: !isProd}),
 		scriptsBeforeReplacementStream(),
 		// Only do string replacements when building for production
 		gulpPlugins.if(
@@ -65,6 +65,6 @@ export default function scripts(done) {
 			getStringReplacementTasks()
 		),
 		scriptsAfterReplacementStream(),
-		dest(paths.scripts.dest, {sourcemaps: !isProd}),
-	], done);
+		dest( paths.scripts.dest, {sourcemaps: !isProd}),
+	], done );
 }

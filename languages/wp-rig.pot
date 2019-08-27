@@ -264,23 +264,23 @@ msgid "in %s"
 msgstr ""
 
 #. translators: separator between taxonomy terms
-#: template-parts/content/entry_taxonomies.php:24
+#: template-parts/content/entry_taxonomies.php:25
 msgctxt "list item separator"
 msgid ", "
 msgstr ""
 
 #. translators: %s: list of taxonomy terms
-#: template-parts/content/entry_taxonomies.php:31
+#: template-parts/content/entry_taxonomies.php:32
 msgid "Posted in %s"
 msgstr ""
 
 #. translators: %s: list of taxonomy terms
-#: template-parts/content/entry_taxonomies.php:37
+#: template-parts/content/entry_taxonomies.php:38
 msgid "Tagged %s"
 msgstr ""
 
 #. translators: %s: taxonomy name
-#: template-parts/content/entry_taxonomies.php:44
+#: template-parts/content/entry_taxonomies.php:45
 msgid "%s:"
 msgstr ""
 
@@ -346,17 +346,17 @@ msgid "Page navigation"
 msgstr ""
 
 #: template-parts/footer/info.php:13
-msgid "https://wordpress.org/"
+msgid "https://jonessign.com/"
 msgstr ""
 
 #. translators: %s: CMS name, i.e. WordPress.
-#: template-parts/footer/info.php:16
-msgid "Proudly powered by %s"
+#: template-parts/footer/info.php:17
+msgid "%1$1s - %2$2s"
 msgstr ""
 
 #. translators: Theme name.
-#: template-parts/footer/info.php:22
-msgid "Theme: %s by the contributors."
+#: template-parts/footer/info.php:24
+msgid "Theme: %1$1s from  %2$2s."
 msgstr ""
 
 #: template-parts/header/navigation.php:16

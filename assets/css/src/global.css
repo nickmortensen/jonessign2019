@@ -221,34 +221,42 @@ select {
 }
 
 .site-branding {
-	text-align: center;
-	padding: 60px 0 1.75em;
+	width: 50vw;
+	max-width: 30%;
+	padding: 20px 20px 1.75em;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
 
 .site-title {
-	margin: 0 1em;
 	font-family: var(--highlight-font-family);
 	font-stretch: condensed;
-	font-size: 38px;
+	font-size: var(--font-size-regular);
 	font-weight: 700;
 	line-height: 1.2;
-	color: #333332;
+	color: var(--color-theme-blue);
 }
 
 .site-title a {
 	text-decoration: none;
+	text-transform: uppercase;
+	font-style: italic;
 	color: inherit;
+	align-self: flex-end;
 }
 
 .site-description {
-	margin: 0.4375em 0 0;
+	margin: -1.4375em 0 0;
 	font-family: var(--highlight-font-family);
 	font-stretch: condensed;
-	font-size: 17px;
-	font-weight: inherit;
-	line-height: 1.4;
+	font-size: var(--font-size-small);
+	font-weight: 900;
+	line-height: 1.2;
+	letter-spacing: 0.075rem;
 	word-wrap: break-word;
-	color: #757575;
+	color: var(--color-theme-grey);
 }
 
 /*--------------------------------------------------------------

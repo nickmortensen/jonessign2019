@@ -4,7 +4,7 @@
 /**
  * External dependencies
  */
-export const gulpPlugins = require('gulp-load-plugins')();
+export const gulpPlugins = require( 'gulp-load-plugins' )();
 import path from 'path';
 
 /**
@@ -22,7 +22,7 @@ export const isProd = ( process.env.NODE_ENV === 'production' );
 const config = getThemeConfig();
 
 // directory for the production theme
-export const prodThemePath = path.normalize(`${rootPath}/../${config.theme.slug}`);
+export const prodThemePath = path.normalize( `${rootPath}/../${config.theme.slug}` );
 
 // directory for assets (CSS, JS, images)
 export const assetsDir = `${rootPath}/assets`;
@@ -119,17 +119,17 @@ let paths = {
 
 // Add rootPath to filesToCopy and additionalFilesToCopy
 for ( let filePath of config.export.filesToCopy.concat( config.export.additionalFilesToCopy ) ) {
-	paths.export.src.push(`${rootPath}/${filePath}`);
+	paths.export.src.push( `${rootPath}/${filePath}` );
 }
 
 // Override paths for production
 if( isProd ){
-	paths.php.dest = `${prodThemePath}/`;
-	paths.styles.dest = `${prodAssetsDir}/css/`;
+	paths.php.dest          = `${prodThemePath}/`;
+	paths.styles.dest       = `${prodAssetsDir}/css/`;
 	paths.styles.editorDest = `${prodAssetsDir}/css/editor/`;
-	paths.scripts.dest = `${prodAssetsDir}/js/`;
-	paths.images.dest = `${prodAssetsDir}/images/`;
-	paths.languages = {
+	paths.scripts.dest      = `${prodAssetsDir}/js/`;
+	paths.images.dest       = `${prodAssetsDir}/images/`;
+	paths.languages         = {
 		src: `${prodThemePath}/**/*.php`,
 		dest: `${prodThemePath}/languages/${config.theme.slug}.pot`
 	};

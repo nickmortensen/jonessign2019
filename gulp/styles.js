@@ -32,7 +32,7 @@ export function stylesBeforeReplacementStream() {
 	// Return a single stream containing all the
 	// before replacement functionality
 	return pipeline.obj([
-		logError('CSS'),
+		logError( 'CSS' ),
 		gulpPlugins.newer({
 			dest: paths.styles.dest,
 			extra: [paths.config.themeConfig]
@@ -43,7 +43,7 @@ export function stylesBeforeReplacementStream() {
 			warningSeverity: 0
 		}),
 		// Log all problems that were found.
-		gulpPlugins.phpcs.reporter('log'),
+		gulpPlugins.phpcs.reporter( 'log' ),
 	]);
 }
 
@@ -54,22 +54,22 @@ export function stylesAfterReplacementStream() {
 		stylelint(),
 		postcssPresetEnv({
 			importFrom: (
-				configValueDefined('config.dev.styles.importFrom') ?
-				appendBaseToFilePathArray(config.dev.styles.importFrom, paths.styles.srcDir) :
+				configValueDefined( 'config.dev.styles.importFrom' ) ?
+				appendBaseToFilePathArray( config.dev.styles.importFrom, paths.styles.srcDir ) :
 				[]
 			),
 			stage: (
-				configValueDefined('config.dev.styles.stage') ?
+				configValueDefined( 'config.dev.styles.stage' ) ?
 				config.dev.styles.stage :
 				3
 			),
 			autoprefixer: (
-				configValueDefined('config.dev.styles.autoprefixer') ?
+				configValueDefined( 'config.dev.styles.autoprefixer' ) ?
 				config.dev.styles.autoprefixer :
 				{}
 			),
 			features: (
-				configValueDefined('config.dev.styles.features') ?
+				configValueDefined( 'config.dev.styles.features' ) ?
 				config.dev.styles.features :
 				{
 					'custom-media-queries': {
@@ -110,10 +110,10 @@ export function stylesAfterReplacementStream() {
 				]
 			})
 		]),
-		gulpPlugins.postcss(postcssPlugins),
+		gulpPlugins.postcss( postcssPlugins ),
 		gulpPlugins.if(
             config.dev.debug.styles,
-            gulpPlugins.tabify(2, true)
+            gulpPlugins.tabify( 2, true )
         ),
 		gulpPlugins.rename({
 			suffix: '.min'
@@ -125,10 +125,10 @@ export function stylesAfterReplacementStream() {
 /**
 * CSS via PostCSS + CSSNext (includes Autoprefixer by default).
 */
-export default function styles(done) {
+export default function styles( done ) {
 
 	return pump([
-		src( paths.styles.src, {sourcemaps: !isProd} ),
+		src( paths.styles.src, {sourcemaps: !isProd}),
 		stylesBeforeReplacementStream(),
 		// Only do string replacements when building for production
 		gulpPlugins.if(
@@ -136,6 +136,6 @@ export default function styles(done) {
 			getStringReplacementTasks()
 		),
 		stylesAfterReplacementStream(),
-		dest(paths.styles.dest, {sourcemaps: !isProd}),
-	], done);
+		dest( paths.styles.dest, {sourcemaps: !isProd}),
+	], done );
 }

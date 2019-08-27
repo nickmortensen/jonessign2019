@@ -12,10 +12,32 @@
       "https": true
     },
     "styles": {
-      "stage": 0,
-      "importFrom": [
-        "_custom-media.css"
-      ]
-    }
-  }
+		"stage": 0,
+		"autoprefixer": {
+		  "grid": false
+		},
+		"importFrom": [
+		  "_custom-media.css"
+		],
+		"features": {
+		  "custom-media-queries": true,
+		  "custom-properties": true,
+		  "nesting-rules": true
+		}
+	  },
+	  "debug": {
+		"styles": true,
+		"scripts": false,
+		"phpcs": true
+	  }
+	},
+	"export": {
+	  "compress": true,
+	  "generatePotFile": true,
+	  "filesToCopy": [
+		"LICENSE",
+		"readme.txt",
+		"screenshot.png"
+	  ]
+	}
 }
