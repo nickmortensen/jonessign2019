@@ -44,3 +44,7 @@
 !screenshot.png
 !.travis.yml
 !.browserslistrc
+
+# ensure we don't upload the apiKey
+./googlemaps/googlemaps.js
+./googlemaps/.env
